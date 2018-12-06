@@ -1,0 +1,43 @@
+{
+  "name": "vuecli3-res",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "babel-plugin-component": "^1.1.1",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.17",
+    "echarts": "^3.7.2",
+    "element-ui": "2.4.3",
+    "font-awesome": "^4.7.0",
+    "axios": "^0.18.0",
+    "vue-i18n": "^8.2.1",
+    "vue-particles": "^1.0.9",
+    "mockjs": "^1.0.1-beta3",
+    "reqwest": "^2.0.5",
+    "rythm.js": "^2.2.1",
+    "screenfull": "^3.3.3",
+    "jsonp": "^0.2.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
