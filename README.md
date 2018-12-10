@@ -26,4 +26,4 @@ npm run lint
 ```
 ![Image text](http://thyrsi.com/t6/630/1544434976x2890171450.jpg)
 ![Image text](http://thyrsi.com/t6/630/1544435022x2890171450.jpg)
-![Image text](https://i.ibb.co/TTKQvpd/T20181210173719.png)
+![Image text](http://thyrsi.com/t6/630/1544435073x2890171450.jpg)
