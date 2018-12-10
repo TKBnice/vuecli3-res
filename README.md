@@ -24,4 +24,4 @@ npm run test
 ```
 npm run lint
 ```
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](http://thyrsi.com/t6/630/1544434492x2890171450.jpg)
