@@ -1,6 +1,9 @@
 export const m = {
   login: {
-    introduction: '欢迎使用自动化装逼系统',
+    login:'登陆',
+    account:'账号',
+    password:'密码',
+    introduction: '欢迎使用自动化装逼系统!',
     name_holder: '用户名',
     password_holder: '密码',
     name_tip: '请输入正确的用户名',

@@ -7,6 +7,8 @@ import VueParticles from 'vue-particles'
 import './mock/mock'
 import i18n from './lang' // Internationalization
 import './directives/customTitle.js'
+import customComponents from'./components/customComponents.js'
+
 
 import 'font-awesome/less/font-awesome.less'
 
@@ -93,6 +95,7 @@ Vue.use(Cascader)
 Vue.use(Loading.directive)
 Vue.use(VueParticles)
 
+Vue.use(customComponents);
 
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
