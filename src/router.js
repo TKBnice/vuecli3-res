@@ -22,7 +22,7 @@ const Cube = resolve => require(['@/views/Cube'], resolve)
 //     // 权限测试
 const AuthorityTest = resolve => require(['@/views/AuthorityTest'], resolve)
 //     // 智能上下架
-const Intelligencedelivery = resolve => require(['@/views/Intelligencedelivery'], resolve)
+const Intelligencedelivery = resolve => require(['@/views/intelligencedelivered'], resolve)
 
 //     // 404
 const Notfound = resolve => require(['@/views/Notfound'], resolve)

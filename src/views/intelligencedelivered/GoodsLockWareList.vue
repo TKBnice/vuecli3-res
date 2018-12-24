@@ -1,32 +1,25 @@
 <template>
 <div>
-<UiDialog v-model="showEditor" :maximized="true" :width="1200" :height="600" :showClose="true" 
-                title="快速编辑商品">
-            <div style="text-align:left">
-            <!-- <JdWareEditor ref="edit-ware-batchUpdate" 
-            :wareId="currentWareId" 
-            :transparentPicOnly="false"
-            :showWareList="false">
-            </JdWareEditor> -->
-            </div>
-</UiDialog>
 <table v-if="listMode==1" style="width: 100%;border-collapse:collapse;"> 
             <tr class="grid-header">
                 <td class="grid-header-cell head" style="width: 70px;">
                     <UiCheckBox v-model="selectAll" @changed="changeSelectAll"></UiCheckBox> 本页
-                </td><td class="grid-header-cell" style="width:calc(100% - 750px)">
+                </td>
+                <td class="grid-header-cell" style="width: 100px;">
+                    锁定状态
+                </td>
+                <td class="grid-header-cell" style="width:calc(100% - 750px)">
                     商品标题
                 </td>
                 <td class="grid-header-cell" style="width: 200px;">
                     京东分类
                 </td>
-                <td class="grid-header-cell" style="width: 260px;">
-                    <span v-if="!hasTrafficData">店铺分类</span>
-                    <span v-else>详情页访问(PV) / 买家访问(UV)</span>
-                </td>
                 <td class="grid-header-cell tail" style="width: 120px;">
                     价格/库存
-                </td>                
+                </td> 
+                <td class="grid-header-cell tail" style="width: 220px;">
+                    操作
+                </td>               
             </tr>
             <tr class="grid-row"  v-if="isLoading">
                 <td class="grid-row-cell head tail" style="text-align:center;width:500px" colspan="7">
@@ -37,6 +30,7 @@
                 <td class="grid-row-cell head">
                     <UiCheckBox v-model="checkStatus[n]" @changed="onWareSelectionChange(ware.ware_id,n)"></UiCheckBox> {{(n+1)+(page-1)*pageSize}}
                 </td>
+                <td class="grid-row-cell">锁定</td>
                 <td class="grid-row-cell" style="display:flex;align-items: center;justify-content: flex-start">
                     <div class="item-pic-wrap" style="cursor:pointer">
                         <img :src="utils.getJDMainImgSrc(ware.logo)" class="main-pic-wrapper" style="width:40px;height:40px;" />
@@ -49,41 +43,28 @@
                         <a class="alink" :href="ware.itemUrl" :title="ware.title" target="_Blank">
                             {{utils.maxLen(ware.title,35)}}
                         </a>
-                        
+                        <!-- <i class="el-icon-edit" style="color:gray;cursor:pointer" title="前往快速编辑" @click="gotoEditor(ware.ware_id)"></i> -->
                         <br/>
                         <span style="color:#999">
                         编码：{{ware.ware_id}}&nbsp;&nbsp;
                         <span :title="ware.itemNum" style="margin-left:3px;">货号：{{utils.maxLen(ware.itemNum,20)}}</span>
-                        </span>
-                        <span>
-                            <i class="el-icon-ext-edit" style="color:#CCC;cursor:pointer" title="快速编辑商品" @click="gotoEditor(ware.ware_id)"></i>
                         </span>
                     </div>
                 </td>
                 <td class="grid-row-cell">
                      {{ware.cateName1}}>{{ware.cateName2}}>{{ware.cateName3}}
                 </td>
-                <td class="grid-row-cell">
-                    <div v-if="!hasTrafficData"  v-html="getShopCateText(ware.shopCateNames)"></div>
-                    <div v-else>
-                        <div>
-                            <div style="width:110px;float:left">PV: <b>{{ware.pv}}</b></div>
-                            <div style="width:110px;float:left">UV: <b>{{ware.uv}}</b></div>
-                        </div>
-                        <div>
-                            <div style="width:110px;float:left">销量: <b>{{ware.jdpay_auction_num}}</b></div>
-                            <div style="width:140px;float:left">销售额: <b>¥{{ware.jdpay_trade_amt}}</b></div>
-                            <div style="width:110px;float:left">订单数: <b>{{ware.jdpay_trade_num}}</b></div>
-                        </div>
-                    </div>
-                </td>
-                <td class="grid-row-cell tail">
+
+                <td class="grid-row-cell ">
                     <div style="">
                         京东价：¥ {{ware.jdPrice}}<br/>
                         库存：{{ware.stockNum}}
                     </div>
                 </td>
-
+                <td class="grid-row-cell">
+                     <button class="button-2" style="width:120px;"  @click="action('lock',ware)"><i class="el-icon-circle-check"></i>&nbsp;锁定</button>
+                     <!-- <button class="button-2" style="width:120px;"  @click="action('cancelLock',ware)"><i class="el-icon-ext-stop"></i>&nbsp;取消锁定</button> -->
+                </td>
             </tr>
     </table>
     <div class="big-picture-list-mode" v-if="listMode==2">
@@ -111,8 +92,8 @@
 </template>
 
 <script>
-import utils from "./Utils";
-// import vue from 'vue';
+import utils from "@/common/Utils";
+import vue from 'vue';
 export default {
   name: "filterWares",
   props: {
@@ -182,6 +163,8 @@ export default {
     },
   mounted() {
     // this.selectedWareIds = this.$store.state.batchUpdate.curBatch.selectedWareIds;
+    this.selectedWareIds = [];
+
   },
   beforeRouteLeave(to, from, next) {
     next();
@@ -192,7 +175,7 @@ export default {
            this.showEditor = true;
        },
        onWareClick(wareId,n){
-            this.$set(this.checkStatus,n,!this.checkStatus[n]);
+            vue.set(this.checkStatus,n,!this.checkStatus[n]);
             this.onWareSelectionChange(wareId,n);
         },
         getShopCateText(shopCateNames) {
@@ -230,7 +213,10 @@ export default {
                 }
             }
             this.selectAll= selAll;
-        }
+        },
+      action(t, w) {
+        this.$emit("action", { t: t, id: w.ware_id });
+      }
   }
 };
 </script>

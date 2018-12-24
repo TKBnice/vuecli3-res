@@ -6,7 +6,7 @@ import store from './store/index'
 import VueParticles from 'vue-particles'
 import './mock/mock'
 import i18n from './lang' // Internationalization
-import './directives/customTitle.js'
+// import './directives/customTitle.js'//自定义指令
 import customComponents from'./components/customComponents.js'
 
 
@@ -32,6 +32,7 @@ import {
   Select,
   Option,
   OptionGroup,
+  DatePicker,
   Button,
   ButtonGroup,
   Popover,
@@ -49,6 +50,7 @@ import {
   Cascader,
   Loading,
   MessageBox,
+  Pagination,
   Message
 } from 'element-ui'
 // 框架
@@ -76,6 +78,7 @@ Vue.use(Switch)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(OptionGroup)
+Vue.use(DatePicker)
 Vue.use(Button)
 Vue.use(ButtonGroup)
 Vue.use(Popover)
@@ -91,7 +94,9 @@ Vue.use(Col)
 Vue.use(Card)
 Vue.use(Rate)
 Vue.use(Cascader)
+Vue.use(Pagination)
 
+ 
 Vue.use(Loading.directive)
 Vue.use(VueParticles)
 
