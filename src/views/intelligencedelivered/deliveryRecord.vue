@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-left:20px;padding-bottom:30px;">
+  <div style="margin-left:10px;padding-bottom:30px;padding-top:10px;">
       <GoodsLockRecords
         v-if="listMode==1"
         :wares="wares" :isLoading="isLoading" :page="page" :pageSize="pageSize"

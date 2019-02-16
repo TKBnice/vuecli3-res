@@ -136,7 +136,7 @@ export default {
     color: #fff;
     text-align: center;
     background: #324157;
-    padding: 18px 0;
+    padding: 22px 0;
     margin: 0;
   }
 }
@@ -147,6 +147,7 @@ export default {
 }
 .el-menu {
   height: 100%;
+  border-right: none; 
 }
 
 // 美化左侧导航的留白

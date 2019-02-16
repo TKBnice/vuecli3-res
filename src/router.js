@@ -12,7 +12,7 @@ const Layout = resolve => require(['@/views/Layout'], resolve)
 // // 项目信息
 const ProjectInfo = resolve => require(['@/views/ProjectInfo'], resolve)
 
-// // 关于作者
+// // 关于组件
 const About = resolve => require(['@/views/About'], resolve)
 
 // // 天气预报

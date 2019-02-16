@@ -1,12 +1,6 @@
 <template>
 <div>
 
-
-
-
-
-
-  
         <div class="marginT20">
           <div class="verticalLine-title" >
             <span style="height:20px;line-height:20px;font-size:16px;" >上下架历史/查看</span>

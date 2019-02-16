@@ -6,7 +6,12 @@
             <!-- 这是顶部导航 -->
             <top-bar></top-bar>
             <!-- 这是组件要插入的地方 -->
-            <router-view class="page-component-wrap animated fadeIn"></router-view>
+            <div style="position: relative;overflow: hidden;">
+              <transition name="fade-transform" mode="out-in">
+                <router-view class="page-component-wrap animated fadeIn"></router-view>
+              </transition> 
+            </div>
+            
         </div>
     </div>
 </template>
@@ -31,4 +36,21 @@ export default {
   }
 }
 </script>
+<style scoped>
+/*fade-transform*/
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .3s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
 

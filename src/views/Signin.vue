@@ -60,7 +60,7 @@
                               <el-form ref="form" :model="form"  label-width="0px">
                                 <el-form-item > 
                                     <label class="label" style="margin-top: 25px;height:36px;" for="text" >{{$t('m.login.account')}}</label>
-                                    <input type="text" id="email" @focus="emailFocus" v-model="form.name" autocomplete="off" :placeholder="$t('m.login.name_holder')">
+                                    <input v-focus type="text" id="email" @focus="emailFocus" v-model="form.name" autocomplete="off" :placeholder="$t('m.login.name_holder')">
                                     <label class="label" style="height:32px;" for="password" >{{$t('m.login.password')}}</label>
                                     <input type="password" id="password" @focus="passwordFocus" v-model="form.password" autocomplete="off" :placeholder="$t('m.login.password_holder')" >
                                 </el-form-item>

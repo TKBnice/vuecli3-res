@@ -15,23 +15,17 @@
         >
       </GoodsLockWare>
     </div>
-      <div class="floating-bar">
-            <div class="portage-steps-main-footer" style="margin-top:15px">
-                <div style="width: 160px;display: inline-block">&nbsp;</div>
+      <div class="floating-bar" :class="{'floatingBarCollapse':isCollapse}">
+            <div class="portage-steps-main-footer"  style="margin-top:15px">
                 
-              <div style="width: 200px;display: inline-block;color:#FFF;font-size:16px;position:absolute;left:160px">
+              <div style="width: 200px;display: inline-block;color:#FFF;font-size:16px;position:absolute;left:0px">
                   已选择&nbsp;<span style="font-size:20px;font-weight:bold">{{selectedIdNums}}</span> 个商品
               </div> 
-
-              &nbsp;&nbsp;&nbsp;&nbsp;
               <RippleButton classsName="main-step-button mid2" @click="onShelfLock">&nbsp;上架锁定</RippleButton>
-              
               &nbsp;&nbsp;&nbsp;&nbsp;
               <RippleButton classsName="main-step-button mid2" @click="lowerFrameLock">&nbsp;下架锁定</RippleButton>
-              
               &nbsp;&nbsp;&nbsp;&nbsp;
               <RippleButton classsName="main-step-button mid2" @click="cancelOnShelfLock">&nbsp;取消上架锁定</RippleButton>
-
               &nbsp;&nbsp;&nbsp;&nbsp;
               <RippleButton classsName="main-step-button mid2" @click="cancelLowerFrameLock">&nbsp;取消下架锁定</RippleButton>
 
@@ -63,6 +57,15 @@ export default {
   },
   components: {
     GoodsLockWare
+  },
+  computed: {
+    isCollapse() {
+      // return this.$store.state.common.isCollapse
+
+      return this.$store.getters.isCollapse
+      // return true
+
+    }
   },
   watch: {},
   mounted() {

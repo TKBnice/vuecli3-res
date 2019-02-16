@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align:left">
+  <div style="text-align:left;padding-left: 10px;">
         <el-tabs v-model="filterType" @tab-click="filterTypeChange">
             <el-tab-pane label="按商品信息过滤" name="scope" v-if="!isTrafficWareFilterOnly">
                 <div class="filter-options-line">

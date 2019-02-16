@@ -1,6 +1,6 @@
 <template>
-  <div style="margin:30px;background:#fff;">
-    <div class="marginT20">
+  <div style="margin:30px;background:#fff;margin-top:0px;">
+    <div style="padding-top:10px;">
           <div class="verticalLine-title" >
               <span style="height:20px;line-height:20px;font-size:16px;">开启智能上下架</span>
               <el-switch

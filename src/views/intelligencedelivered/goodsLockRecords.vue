@@ -1,6 +1,6 @@
 <template>
 <div>
-        <div class="marginT20">
+        <div style="padding-top:10px;">
             <div class="verticalLine-title" >
                 <span style="height:20px;line-height:20px;font-size:16px;">批次选择：</span>
                 <el-select v-model="week" clearable  style="width:120px;" placeholder="选择星期" size="small">

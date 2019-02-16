@@ -20,7 +20,7 @@ export const m = {
   menu: {
     project: '项目管理',
     notes: '开发备忘',
-    about: '关于作者',
+    about: '关于组件',
     weather: '天气预报',
     cube: '魔幻立方',
     authority: '权限测试',

@@ -34,7 +34,7 @@ if (debug) {
                     router: '/project-info',
                     icon: 'el-icon-date'
                 }, {
-                    name: '关于作者',
+                    name: '关于组件',
                     name_en: 'About',
                     router: '/enroll-list',
                     icon: 'el-icon-document'
