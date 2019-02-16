@@ -1,11 +1,20 @@
 <!-- 左侧导航组件 -->
 <!-- 使用说明：<side-bar></side-bar> -->
 <template>
-    <div id="sidebar-wrap" :class="{ collapsed: toggSiderBar }">
+    <div id="sidebar-wrap"  :class="{ collapsed: toggSiderBar }">
         <h3 class="logo">
           <span class="rythm twist1">{{toggSiderBar ? 'VUE': 'AUTO VUE'}}</span>
         </h3>
-        <el-menu background-color="#324157" text-color="#ddd" :default-active="$route.path" :unique-opened="isUnique" :router="isRouter" mode="vertical" :collapse="toggSiderBar">
+        <el-menu background-color="#324157" 
+        text-color="#ddd" 
+        :default-active="$route.path" 
+        :unique-opened="isUnique" 
+        :router="isRouter" 
+        :show-timeout="200"
+        mode="vertical" 
+        :class="{ collapsed: toggSiderBar }"
+        :collapse="toggSiderBar">
+        <!-- :class="{ collapsed: toggSiderBar }" -->
             <template v-for="item in menu">
                 <el-submenu v-if="item.children.length !== 0" :index="item.router" :key="item.router">
                     <template slot="title">
@@ -13,7 +22,7 @@
                         <span slot="title">{{langType === 'en'? item.name_en: item.name}}</span>
                     </template>
                     <el-menu-item v-for="child in item.children" :index="child.router" :key="child.router">
-                        <i :class="child.icon"></i>
+                        <!-- <i :class="child.icon"></i> -->
                         <span slot="title">{{langType === 'en'? child.name_en: child.name}}</span>
                     </el-menu-item>
                 </el-submenu>
@@ -108,16 +117,23 @@ export default {
 };
 </script>
 <style scoped lang="less">
+#sidebar-wrap.collapsed{
+  width: 64px;
+}
 #sidebar-wrap {
-  width: 160px;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 5;
-
+    -webkit-transition: width 0.28s;
+    transition: width 0.28s;
+    width: 160px;
+    height: 100%;
+    position: fixed;
+    font-size: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
   /* 图标动画 */
+
   .imgWrap {
     text-align: center;
     position: absolute;
@@ -138,14 +154,21 @@ export default {
     background: #324157;
     padding: 22px 0;
     margin: 0;
+    height: 16px;
+    line-height: 16px;
+    font-size: 14px;
+    overflow: hidden;
   }
 }
 
 // 动态改变左侧导航包裹层宽度
-#sidebar-wrap.collapsed {
+#sidebar-wrap .el-menu.collapsed{
+  -webkit-transition: width 0.28s;
+  transition: width 0.28s;
   width: 64px;
 }
-.el-menu {
+#sidebar-wrap .el-menu {
+  width: 160px;
   height: 100%;
   border-right: none; 
 }
@@ -153,8 +176,9 @@ export default {
 // 美化左侧导航的留白
 .el-submenu .el-menu-item {
   padding: 0 20px;
-  min-width: 160px;
-  padding-left: 20px !important;
+  // min-width: 160px;
+  font-size: 12px;
+  // padding-left: 20px !important;
 }
 
 // 改变元素属性，要不动画效果不管用，是不是很厉害啊？哈哈哈

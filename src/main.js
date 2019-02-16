@@ -8,7 +8,7 @@ import './mock/mock'
 import i18n from './lang' // Internationalization
 // import './directives/customTitle.js'//自定义指令
 import customComponents from'./components/customComponents.js'
-
+import Messager from './common/Messager.js'
 
 import 'font-awesome/less/font-awesome.less'
 
@@ -55,6 +55,9 @@ import {
 } from 'element-ui'
 // 框架
 
+
+
+
 // 样式
 
 //工具
@@ -95,8 +98,10 @@ Vue.use(Card)
 Vue.use(Rate)
 Vue.use(Cascader)
 Vue.use(Pagination)
+Vue.use(Message)
 
- 
+
+
 Vue.use(Loading.directive)
 Vue.use(VueParticles)
 
@@ -107,9 +112,7 @@ Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$alert = MessageBox.alert
-
 Vue.prototype.$message = Message
-
 
 Vue.prototype.$axios = axios
 
@@ -117,7 +120,7 @@ Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'api/v1/'
 
-new Vue({
+const thisVm = new Vue({
   router,
   store,
   i18n,
@@ -132,3 +135,4 @@ new Vue({
 //   template: '<App/>',
 //   components: { App }
 // })
+Vue.prototype.$messager = new Messager(thisVm);

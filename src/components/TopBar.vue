@@ -80,7 +80,7 @@ export default {
 #topbar-wrap {
   overflow: hidden;
   border-bottom: 1px solid #e7eaec;
-  background: #324157;
+  background: #2d3546;
   color: #fff;
   padding: 0 15px;
   z-index: 4;

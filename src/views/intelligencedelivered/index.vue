@@ -1,5 +1,5 @@
 <template>
-  <div class="main-body">
+  <div class="main-body" v-title="'智能上下架'">
     <!-- <div class="tab-labels">
         <el-button type="primary" @click="handleChangeTab('intelligencedelivery')">智能上下架</el-button>
         <el-button type="primary" @click="handleChangeTab('commoditylock')">商品锁定</el-button>
