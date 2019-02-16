@@ -24,8 +24,8 @@ npm run test
 ```
 npm run lint
 ```
-![Image text](http://thyrsi.com/t6/632/1544765940x2890211732.jpg)
+![Image text](http://thyrsi.com/t6/671/1550325582x2890174106.png)
 
-![Image text](http://thyrsi.com/t6/630/1544435022x2890171450.jpg)
+![Image text](http://thyrsi.com/t6/671/1550325614x2890174106.png)
 
-![Image text](http://thyrsi.com/t6/630/1544435073x2890171450.jpg)
+![Image text](http://thyrsi.com/t6/671/1550325629x2890174106.png)
