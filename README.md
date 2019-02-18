@@ -14,23 +14,22 @@ npm run lint
 ```
 ### Tech Stack
 
-Vue @ 2.5.9
-Vue-Router
-Vue-cli
-Vue-i18n
-Vuex
-ES6
-Axios
-jsonp
-eCharts @ 3.7.2
-Element-UI @ 2.4.3
-Sass (怀念Less)
-Animate.CSS
-Font-Awesome
-screenfull
-MockJS
-Yarn
-babel-polyfill 兼容IE垫片
+- Vue @ 2.5.9
+- Vue-Router
+- Vue-cli
+- Vue-i18n
+- Vuex
+- ES6
+- Axios
+- jsonp
+- eCharts @ 3.7.2
+- Element-UI @ 2.4.3
+- Less 
+- Animate.CSS
+- Font-Awesome
+- screenfull
+- MockJS
+- babel-polyfill 兼容IE垫片
 
 ### Compiles and minifies for production
 
