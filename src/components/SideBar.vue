@@ -176,9 +176,10 @@ export default {
 // 美化左侧导航的留白
 .el-submenu .el-menu-item {
   padding: 0 20px;
-  // min-width: 160px;
+  min-width: 160px;
   font-size: 12px;
-  // padding-left: 20px !important;
+  text-align: center;
+  padding-left: 20px !important;
 }
 
 // 改变元素属性，要不动画效果不管用，是不是很厉害啊？哈哈哈

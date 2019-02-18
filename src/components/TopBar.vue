@@ -3,10 +3,21 @@
 <template>
     <div id="topbar-wrap" :class="{ topCollapsed: isCollapse }">
         <el-row type="flex" justify="space-between">
-            <el-col :span="5">
-                <i :class="[isCollapse? 'nav-rotate': '','fa fa-bars']" @click="toggleSiderBar"></i>
-            </el-col>
             <el-col :span="12">
+                <el-row type="flex" >
+                    <div>
+                        <i :class="[isCollapse? 'nav-rotate': '','fa fa-bars']" @click="toggleSiderBar"></i>
+                    </div>
+                    
+                    <div class="">
+                         <breadcrumb></breadcrumb>  
+                    </div>
+                      
+                </el-row>
+
+                
+            </el-col>
+            <el-col :span="8">
                 <el-row type="flex" class="row-right" justify="end">
                     <el-col :span="5">
                         <a class="animated fadeIn">{{$t('m.topbar.sayHi')}}，{{userName}}</a>
@@ -28,6 +39,8 @@
 <script>
 import screenfull from 'screenfull'
 import bus from '@/bus'
+import Breadcrumb from '@/components/Breadcrumb'
+
 export default {
   name: 'topbar',
   data() {
@@ -38,9 +51,15 @@ export default {
   computed: {
     isCollapse() {
       return this.$store.getters.isCollapse
-      // return true
-
     }
+  },
+  components:{
+    Breadcrumb
+  },
+  watch: {
+  },
+  created() {
+
   },
   methods: {
     toggleSiderBar() {

@@ -10,6 +10,9 @@ const Signin = resolve => require(['@/views/Signin'], resolve)
 const Layout = resolve => require(['@/views/Layout'], resolve)
 
 // // 项目信息
+const Dashboard = resolve => require(['@/views/dashboard'], resolve)
+
+// // 项目信息
 const ProjectInfo = resolve => require(['@/views/ProjectInfo'], resolve)
 
 // // 关于组件
@@ -33,8 +36,20 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         {
+            path: '/',
+            component: Layout,
+            redirect: '/dashboard',
+            name: 'Dashboard',
+            meta: {
+                requireAuth: true
+            },
+            children: [{
+                path: 'dashboard',
+                component: Dashboard
+            }]
+        },
+        {
             path: '/signin',
-            name: 'signin',
             meta: {
                 requireAuth: true
             },
@@ -42,65 +57,118 @@ const router = new Router({
         },
         // 然后就是嵌套路由了，也就是登陆后的各个页面
         {
-            path: '/',
+            path: '/project-info',
+            name: 'project-info',
+            component: Layout,
+            redirect: '/project-info/index-1', // 重定向到第一个子路由，否则只渲染Layout组件，这块儿使用时解除注释
+            // redirect: '/signin', // 这里重定向到登录页面，是为了展示使用，实际用这个项目开发时，需要注释这行，解除上一行的注释
             meta: {
+                title: 'project-info',
                 requireAuth: true
             },
-            component: Layout,
-            // redirect: '/project-info', // 重定向到第一个子路由，否则只渲染Layout组件，这块儿使用时解除注释
-            redirect: '/signin', // 这里重定向到登录页面，是为了展示使用，实际用这个项目开发时，需要注释这行，解除上一行的注释
             children: [{
-                    path: 'project-info',
+                    path: 'index-1',
+                    name: 'index-1',
                     meta: {
+                        title: 'index-1',
                         requireAuth: true
                     },
                     component: ProjectInfo
                 },
                 {
-                    path: 'enroll-list',
+                    path: 'index-2',
+                    name: 'index-2',
                     meta: {
+                        title: 'index-2',
                         requireAuth: true
                     },
                     component: About
-                },
-                {
-                    path: 'weather',
-                    meta: {
-                        requireAuth: true
-                    },
-                    component: Weather
-                },
-                {
-                    path: 'cube',
-                    meta: {
-                        requireAuth: true
-                    },
-                    component: Cube
-                },
-                {
-                    path: 'authority-test',
-                    meta: {
-                        requireAuth: true
-                    },
-                    component: AuthorityTest
-                },
-                {
-                    path: 'intelligence-delivery',
-                    meta: {
-                        requireAuth: true
-                    },
-                    component: Intelligencedelivery
                 }
             ]
+        },
+
+        {
+            path: '/weather',
+            name: 'weather',
+            meta: {
+                title: 'weather',
+                requireAuth: true
+            },
+            redirect: '/weather/index-1',
+            component: Layout,
+            children: [{
+                path: 'index-1',
+                name: 'index-1',
+                meta: {
+                    title: 'index-1',
+                    requireAuth: true
+                },
+                component: Weather
+            }]
+        },
+        {
+            path: '/cube',
+            name: 'cube',
+            meta: {
+                title: 'cube',
+                requireAuth: true
+            },
+            redirect: '/cube/index-1',
+            component: Layout,
+            children: [{
+                path: 'index-1',
+                name: 'index-1',
+                meta: {
+                    title: 'index-1',
+                    requireAuth: true
+                },
+                component: Cube
+            }]
+        },
+        {
+            path: '/authority-test',
+            name: 'authority-test',
+            meta: {
+                title: 'authority-test',
+                requireAuth: true
+            },
+            redirect: '/authority-test/index-1',
+            component: Layout,
+            children: [{
+                path: 'index-1',
+                name: 'index-1',
+                meta: {
+                    title: 'index-1',
+                    requireAuth: true
+                },
+                component: AuthorityTest
+            }]
+        },
+        {
+            path: '/intelligence-delivery',
+            name: 'intelligence-delivery',
+            meta: {
+                title: 'intelligence-delivery',
+                requireAuth: true
+            },
+            redirect: '/intelligence-delivery/index-1',
+            component: Layout,
+            children: [{
+                path: 'index-1',
+                name: 'index-1',
+                meta: {
+                    title: 'index-1',
+                    requireAuth: true
+                },
+                component: Intelligencedelivery
+            }]
         },
         // 最后是404页面
         {
             path: '*',
-            meta: {
-                requireAuth: false
-            },
             component: Notfound
-        }
+        },
+        { path: '/404', component: Notfound},
     ]
 
 })

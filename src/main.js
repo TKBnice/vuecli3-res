@@ -40,6 +40,8 @@ import {
   Form,
   FormItem,
   Tabs,
+  BreadcrumbItem,
+  Breadcrumb,
   TabPane,
   Tag,
   Icon,
@@ -89,6 +91,8 @@ Vue.use(Tooltip)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Tabs)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
 Vue.use(TabPane)
 Vue.use(Tag)
 Vue.use(Icon)
