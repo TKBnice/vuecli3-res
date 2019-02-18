@@ -18,6 +18,7 @@ export const m = {
     logout: 'Logout'
   },
   menu: {
+    dashboard:'Dashboard',
     project: 'Projects',
     notes: 'Notes',
     about: 'About',

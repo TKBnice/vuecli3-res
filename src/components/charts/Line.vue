@@ -2,7 +2,7 @@
     <!-- 包裹层设置初始高度，宽度不管 -->
     <div id="myChartWrap">
         <!-- 这里是要渲染的图表 -->
-        <div id="lineId"></div>
+        <div id="tb-echarts"></div>
     </div>
 </template>
 <script>
@@ -18,7 +18,7 @@ require("echarts/lib/component/toolbox");
 require("echarts/lib/component/legend");
 
 export default {
-  name: "line",
+  name: "tb-echarts",
   props: {
     lineData: {
       type: Object,
@@ -45,7 +45,7 @@ export default {
   computed: {
     myChart() {
       console.log("生成myChart实例");
-      return echarts.init(document.getElementById("lineId"));
+      return echarts.init(document.getElementById("tb-echarts"));
     }
   },
   mounted() {

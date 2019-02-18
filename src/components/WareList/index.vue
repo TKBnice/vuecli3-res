@@ -1,16 +1,16 @@
 <template>
 <div>
-<UiDialog v-model="showEditor" :maximized="true" :width="1200" :height="600" :showClose="true" 
-                title="快速编辑商品">
-            <div style="text-align:left">
-            <!-- <JdWareEditor ref="edit-ware-batchUpdate" 
-            :wareId="currentWareId" 
-            :transparentPicOnly="false"
-            :showWareList="false">
-            </JdWareEditor> -->
-            </div>
-</UiDialog>
-<table v-if="listMode==1" style="width: 100%;border-collapse:collapse;"> 
+    <UiDialog v-model="showEditor" :maximized="true" 
+    :width="1200" :height="600" :showClose="true" title="快速编辑商品">
+        <div style="text-align:left">
+        <!-- <JdWareEditor ref="edit-ware-batchUpdate" 
+        :wareId="currentWareId" 
+        :transparentPicOnly="false"
+        :showWareList="false">
+        </JdWareEditor> -->
+        </div>
+    </UiDialog>
+    <table v-if="listMode==1" style="width: 100%;border-collapse:collapse;"> 
             <tr class="grid-header">
                 <td class="grid-header-cell head" style="width: 70px;">
                     <UiCheckBox v-model="selectAll" @changed="changeSelectAll"></UiCheckBox> 本页
@@ -111,8 +111,8 @@
 </template>
 
 <script>
-import utils from "./Utils";
-// import vue from 'vue';
+import utils from "../Utils";
+
 export default {
   name: "filterWares",
   props: {

@@ -18,7 +18,8 @@ export const m = {
     logout: '退出'
   },
   menu: {
-    project: '项目管理',
+    dashboard:'主页',
+    projects: '项目管理',
     notes: '开发备忘',
     about: '关于组件',
     weather: '天气预报',

@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import Cube from '@/components/Cube'
+import Cube from 'comp/Cube'
 export default {
   name: "cube",
   components: {

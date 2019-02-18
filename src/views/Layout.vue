@@ -16,8 +16,8 @@
     </div>
 </template>
 <script>
-import TopBar from '@/components/TopBar'
-import SideBar from '@/components/SideBar'
+import TopBar from 'comp/TopBar'
+import SideBar from 'comp/SideBar'
 import '@/filters/handleNum.js'
 export default {
   name: 'layout',

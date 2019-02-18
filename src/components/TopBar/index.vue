@@ -19,13 +19,13 @@
             </el-col>
             <el-col :span="8">
                 <el-row type="flex" class="row-right" justify="end">
-                    <el-col :span="5">
+                    <el-col :span="11">
                         <a class="animated fadeIn">{{$t('m.topbar.sayHi')}}，{{userName}}</a>
                     </el-col>
-                    <el-col :span="2">
+                    <el-col :span="3">
                         <i class="fa fa-language" title="切换语言" @click="toggleLanguage"></i>
                     </el-col>
-                    <el-col :span="2">
+                    <el-col :span="3">
                         <i class="fa fa-arrows-alt" title="切换全屏" @click="toggleFullscreen"></i>
                     </el-col>
                     <el-col :span="3">
@@ -69,11 +69,11 @@ export default {
       let locale = this.$i18n.locale
       locale === 'zh' ? (this.$i18n.locale = 'en') : (this.$i18n.locale = 'zh')
       let info = locale === 'en' ? '切换成功' : 'change language successfully'
-      this.$message.success(info)
+      this.$messager.success(info)
     },
     toggleFullscreen() {
       if (!screenfull.enabled) {
-        this.$message({
+        this.$messager({
           message: '您的浏览器不支持全屏',
           type: 'warning'
         })
@@ -84,7 +84,7 @@ export default {
     logout() {
       localStorage.clear()
       // bus.$emit('stopMusic')
-      this.$router.push('signin')
+      this.$router.push('/Signin')
     }
   },
   watch: {
@@ -101,13 +101,14 @@ export default {
   border-bottom: 1px solid #e7eaec;
   background: #2d3546;
   color: #fff;
+  height: 50px;
   padding: 0 15px;
   z-index: 4;
   box-sizing: border-box;
   .logo {
     color: #fff;
     font-weight: bold;
-    line-height: 60px;
+    line-height: 50px;
     margin: 0;
     letter-spacing: 1px;
   }
@@ -126,14 +127,14 @@ export default {
     }
   }
   .fa {
-    font-size: 24px;
+    font-size: 20px;
     transition: all 0.3s;
     &:hover {
       cursor: pointer;
     }
   }
   a {
-    line-height: 60px;
+    line-height: 50px;
   }
   a.logout {
     color: #fff;
@@ -144,7 +145,7 @@ export default {
   }
   i {
     font-size: 20px;
-    line-height: 60px;
+    line-height: 50px;
   }
   .logout {
     color: #fff;

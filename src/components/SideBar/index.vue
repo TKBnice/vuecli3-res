@@ -57,7 +57,7 @@
                 </el-menu-item> -->
         </el-menu>
         <div class="animated bounceInDown imgWrap">
-            <img src="../../static/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
+            <img src="../../../static/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
         </div>
     </div>
 </template>
@@ -152,7 +152,7 @@ export default {
     color: #fff;
     text-align: center;
     background: #324157;
-    padding: 22px 0;
+    padding: 17px 0;
     margin: 0;
     height: 16px;
     line-height: 16px;

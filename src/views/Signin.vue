@@ -48,7 +48,7 @@
                       <div class="right">
                           <svg viewBox="0 0 320 350">
                               <defs>
-                                  <linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307"
+                                  <linearGradient inkscape:collect="always" id="TBlinearGradient" x1="13" y1="193.49992" x2="307"
                                       y2="193.49992" gradientUnits="userSpaceOnUse">
                                       <stop style="stop-color:#ff00ff;" offset="0" id="stop876" />
                                       <stop style="stop-color:#ff0000;" offset="1" id="stop878" />
@@ -172,16 +172,17 @@ export default {
         // 提取菜单数组，交给本地存储
         let menu = res.data.data.menu;
         localStorage.menu = JSON.stringify(menu);
-        this.$router.push("project-info");
+        this.$router.push("/ProjectS");
       });
     },
     openMsg() {
       // 注意这里使用了国际化
-      this.$message.warning(this.$t('m.login.info'));
+      this.$messager.warning(this.$t('m.login.info'));
     },
     emailFocus(){
         let current = null;
         if (current) current.pause();
+        setTimeout(()=>{
             current = anime({
                 targets: 'path',
                 strokeDashoffset: {
@@ -195,6 +196,8 @@ export default {
                     easing: 'easeOutQuart'
                 }
             });
+        },200)
+            
     },
     passwordFocus(){
         let current = null;
@@ -359,7 +362,7 @@ svg {
 }
 path {
     fill: none;
-    stroke: url(#linearGradient);
+    stroke: url(#TBlinearGradient);
     stroke-width: 4;
     stroke-dasharray: 240 1386;
 }

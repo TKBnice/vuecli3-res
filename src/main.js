@@ -112,10 +112,10 @@ Vue.use(VueParticles)
 Vue.use(customComponents);
 
 Vue.prototype.$loading = Loading.service
-Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$prompt = MessageBox.prompt
-Vue.prototype.$alert = MessageBox.alert
+// Vue.prototype.$msgbox = MessageBox
+// Vue.prototype.$confirm = MessageBox.confirm
+// Vue.prototype.$prompt = MessageBox.prompt
+// Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$message = Message
 
 Vue.prototype.$axios = axios
@@ -131,7 +131,7 @@ const thisVm = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-// new Vue({
+// const thisVm =new Vue({
 //   el: '#app',
 //   i18n,
 //   router,

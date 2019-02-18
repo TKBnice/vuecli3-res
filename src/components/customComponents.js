@@ -19,7 +19,7 @@ const customComponents={
         Vue.component('UiProgress',UiProgress);
         Vue.component('UiDialog',UiDialog);
 
-        Vue.component('WareList',resolve => require(['./WareList'], resolve));
+        Vue.component('WareList',resolve => require(['@/components/WareList'], resolve));
 
         Vue.component('remote-script', {//渲染函数创建
             render: function (createElement) {

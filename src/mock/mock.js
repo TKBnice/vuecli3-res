@@ -31,36 +31,36 @@ if (debug) {
                 children: [{
                     name: '开发备忘',
                     name_en: 'Notes',
-                    router: '/project-info/index-1',
+                    router: '/Projects/Notes',
                     icon: 'el-icon-date'
                 }, {
                     name: '关于组件',
                     name_en: 'About',
-                    router: '/project-info/index-2',
+                    router: '/Projects/About',
                     icon: 'el-icon-document'
                 }]
             }, {
                 name: '天气预报',
                 name_en: 'Weather',
-                router: '/weather/index-1',
+                router: '/Weather',
                 icon: 'el-icon-picture-outline',
                 children: []
             }, {
                 name: '魔幻立方',
                 name_en: 'Cube',
-                router: '/cube/index-1',
+                router: '/cube',
                 icon: 'el-icon-menu',
                 children: []
             }, {
                 name: '权限测试',
                 name_en: 'Authority',
-                router: '/authority-test/index-1',
+                router: '/Authority',
                 icon: 'el-icon-setting',
                 children: []
             }, {
                 name: '智能上下架',
-                name_en: 'intelligence',
-                router: '/intelligence-delivery/index-1',
+                name_en: 'Intelligence',
+                router: '/Intelligence',
                 icon: 'el-icon-time',
                 children: []
             }]

@@ -5,7 +5,7 @@ class Messager {
     }
   
       error(message){
-          console.error(message);
+
           this.vm.$message({
              message: message,
              type: 'error',

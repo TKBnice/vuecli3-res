@@ -24,6 +24,7 @@
     "less-loader": "^4.1.0",
     "mockjs": "^1.0.1-beta3",
     "path": "^0.12.7",
+    "path-to-regexp": "^3.0.0",
     "reqwest": "^2.0.5",
     "rythm.js": "^2.2.1",
     "screenfull": "^3.3.3",
