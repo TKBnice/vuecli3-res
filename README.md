@@ -44,7 +44,6 @@ npm run lint
 - [Element-UI](http://element-cn.eleme.io/#/zh-CN)
 - [Vue官网](https://cn.vuejs.org)
 - [Vue-cli使用指南](http://vuejs-templates.github.io/webpack)
-- [一位大神的vue项目搭建干货总结](https://linjinze999.github.io/vue-llplatform/)
 
 ### Lints and fixes files
 1、登录页 
