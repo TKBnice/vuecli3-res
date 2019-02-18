@@ -31,14 +31,23 @@ npm run lint
 - MockJS
 - babel-polyfill 兼容IE垫片
 
-### Compiles and minifies for production
+### Others Maybe Need
 
+- vuedraggable 拖拽功能
+- vue-particles 粒子星空效果
+- js-cookie 读写cookie模块
+- rythm.js 音频节奏可视化模块
+- vuescroll.js 一个滚动条插件
 
-### Run your tests
+### Useful Links
 
+- [Element-UI](http://element-cn.eleme.io/#/zh-CN)
+- [Vue官网](https://cn.vuejs.org)
+- [Vue-cli使用指南](http://vuejs-templates.github.io/webpack)
+- [一位大神的vue项目搭建干货总结](https://linjinze999.github.io/vue-llplatform/)
 
 ### Lints and fixes files
-
+1、登录页 
 ![Image text](http://thyrsi.com/t6/671/1550325582x2890174106.png)
 
 ![Image text](http://thyrsi.com/t6/671/1550325614x2890174106.png)
