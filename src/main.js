@@ -51,7 +51,8 @@ import {
   Rate,
   Cascader,
   Loading,
-  MessageBox,
+  Dialog,
+  // MessageBox,
   Pagination,
   Message
 } from 'element-ui'
@@ -103,7 +104,7 @@ Vue.use(Rate)
 Vue.use(Cascader)
 Vue.use(Pagination)
 Vue.use(Message)
-
+Vue.use(Dialog)
 
 
 Vue.use(Loading.directive)

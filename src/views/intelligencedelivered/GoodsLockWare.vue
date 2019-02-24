@@ -1,5 +1,20 @@
 <template>
   <div>
+<div class="floating-bar" :class="{'floatingBarCollapse':isCollapse}">
+        <div class="portage-steps-main-footer"  style="margin-top:15px">
+            
+          <div style="width: 200px;display: inline-block;color:#FFF;font-size:16px;position:absolute;left:0px">
+              已选择&nbsp;<span style="font-size:20px;font-weight:bold">{{selectedWareIds.length}}</span> 个商品
+          </div> 
+          <RippleButton classsName="main-step-button mid2" @click="onShelfLock">&nbsp;上架锁定</RippleButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <RippleButton classsName="main-step-button mid2" @click="lowerFrameLock">&nbsp;下架锁定</RippleButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <RippleButton classsName="main-step-button mid2" @click="cancelOnShelfLock">&nbsp;取消上架锁定</RippleButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <RippleButton classsName="main-step-button mid2" @click="cancelLowerFrameLock">&nbsp;取消下架锁定</RippleButton>
+        </div>
+    </div>
     <WareFilter
       ref="wareFilter0"
       @change="wareFilterChange"
@@ -51,10 +66,9 @@
             @unselectWare="unselectWare"
             @action="onWareAction"
             >
-        <!-- GoodsLockWareList -->
         </GoodsLockWareList>
     </div>
-
+    
   </div>
 </template>
 
@@ -129,6 +143,9 @@ export default {
   computed: {
     supportedBigPicMode:function(){
       return this.wareListMode!='matting' && this.wareListMode!='whiteGroundImages' ;
+    },
+    isCollapse() {
+      return this.$store.getters.isCollapse
     }
   },
   watch: {
@@ -158,6 +175,18 @@ export default {
     next();
   },
   methods: {
+    onShelfLock(){
+
+    },
+    lowerFrameLock(){
+
+    },
+    cancelOnShelfLock(){
+
+    },
+    cancelLowerFrameLock(){
+
+    },
     initFilters(fitler) {
       if(this.$refs.wareFilter0!=undefined){
           this.$refs.wareFilter0.initFilters(fitler);
@@ -283,7 +312,7 @@ export default {
     },
     updateValue() {
       var l = this.selectedWareIds.length;
-      console.log(l);
+      // console.log(l);
       this.$emit("input", l);
     },
     resetSelectedWareIds() {

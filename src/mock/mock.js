@@ -40,7 +40,7 @@ if (debug) {
                     icon: 'el-icon-document'
                 }]
             }, {
-                name: '天气预报',
+                name: '天气图表',
                 name_en: 'Weather',
                 router: '/Weather',
                 icon: 'el-icon-picture-outline',
@@ -63,7 +63,33 @@ if (debug) {
                 router: '/Intelligence',
                 icon: 'el-icon-time',
                 children: []
-            }]
+            }, {
+                name: '富文本编辑器',
+                name_en: 'QuillEditor',
+                router: '/QuillEditor',
+                icon: 'el-icon-edit-outline',
+                children: []
+            }, {
+                name: '拖拽组件',
+                name_en: 'DragComp',
+                router: '/DragComp',
+                icon: 'el-icon-rank',
+                children: [
+                    {
+                    name: '拖拽列表',
+                    name_en: 'Drag',
+                    router: '/DragComp/Drag',
+                    children: []
+                },
+                {
+                    name: '拖拽弹框',
+                    name_en: 'DragDialog',
+                    router: '/DragComp/DragDialog',
+                    children: []
+                }
+            ]
+            }
+        ]
         },
         "msg": "Success",
         "status": "YQ-000"

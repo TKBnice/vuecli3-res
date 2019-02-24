@@ -25,6 +25,10 @@ export const m = {
     weather: 'Weather',
     cube: 'Cube',
     authority: 'Authority',
-    intelligence:'intelligence'
+    intelligence:'intelligence',
+    quillEditor:'QuillEditor',
+    dragComp:'dragComp',
+    drag:'Drag',
+    dragDialog:'DragDialog'
   }
 }

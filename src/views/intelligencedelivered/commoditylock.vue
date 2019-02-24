@@ -1,6 +1,5 @@
 <template>
   <div style="padding:10px; height: auto;">
-    
     <div class="tab-main">
       <GoodsLockWare ref="goodsLockSelector"
         wareListMode="goodsLock"
@@ -15,25 +14,7 @@
         >
       </GoodsLockWare>
     </div>
-      <div class="floating-bar" :class="{'floatingBarCollapse':isCollapse}">
-            <div class="portage-steps-main-footer"  style="margin-top:15px">
-                
-              <div style="width: 200px;display: inline-block;color:#FFF;font-size:16px;position:absolute;left:0px">
-                  已选择&nbsp;<span style="font-size:20px;font-weight:bold">{{selectedIdNums}}</span> 个商品
-              </div> 
-              <RippleButton classsName="main-step-button mid2" @click="onShelfLock">&nbsp;上架锁定</RippleButton>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <RippleButton classsName="main-step-button mid2" @click="lowerFrameLock">&nbsp;下架锁定</RippleButton>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <RippleButton classsName="main-step-button mid2" @click="cancelOnShelfLock">&nbsp;取消上架锁定</RippleButton>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <RippleButton classsName="main-step-button mid2" @click="cancelLowerFrameLock">&nbsp;取消下架锁定</RippleButton>
-
-              <!-- &nbsp;&nbsp;&nbsp;&nbsp;
-              <RippleButton classsName="main-step-button mid2" @click="showConfig=true"><i class="el-icon-setting"></i>&nbsp;自动白底图配置</RippleButton> -->
-      
-            </div>
-      </div>
+    
   </div>
 
 </template>
@@ -59,17 +40,16 @@ export default {
     GoodsLockWare
   },
   computed: {
-    isCollapse() {
-      // return this.$store.state.common.isCollapse
 
-      return this.$store.getters.isCollapse
-      // return true
-
+  },
+  watch: {
+    selectedIdNums(newVal){
+      console.log(newVal)
     }
   },
-  watch: {},
   mounted() {
     this.initFilter();
+    
   },
   methods: {
    initFilter(){
@@ -100,18 +80,7 @@ export default {
             this.handCancelLock(id);
         }
     },
-    onShelfLock(){
 
-    },
-    lowerFrameLock(){
-
-    },
-    cancelOnShelfLock(){
-
-    },
-    cancelLowerFrameLock(){
-
-    },
     handlockGoods(id){
       console.log('id',id)
       // backendAPI

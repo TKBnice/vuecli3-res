@@ -24,12 +24,11 @@ const Cube = resolve => require(['@/views/Cube'], resolve)
 //     // 权限测试
 const AuthorityTest = resolve => require(['@/views/AuthorityTest'], resolve)
 //     // 智能上下架
-const Intelligencedelivery = resolve => require(['@/views/intelligencedelivered'], resolve)
+const Intelligencedelivery = () => import('@/views/intelligencedelivered')
 
 //     // 404
 const Notfound = resolve => require(['@/views/Notfound'], resolve)
 
-console.log(this)
  
 const router = new Router({
     mode: 'history',
@@ -87,21 +86,10 @@ const router = new Router({
                 }
             ]
         },
-        // {
-        //     path: '/form',
-        //     component: Layout,
-        //     children: [
-        //       {
-        //         path: 'index',
-        //         name: 'Form',
-        //         component: () => import('@/views/form/index'),
-        //         meta: { title: 'Form', icon: 'form' }
-        //       }
-        //     ]
-        //   },
+        
         {
             path: '/Weather',
-            // name: 'Weather',
+            // name: 'Weather',//注释后面包屑不会出现两个名称
             // meta: {
             //     title: 'Weather',
             //     requireAuth: true
@@ -120,11 +108,6 @@ const router = new Router({
         },
         {
             path: '/Cube',
-            // name: 'Cube',
-            // meta: {
-            //     title: 'Cube',
-            //     requireAuth: true
-            // },
             redirect:"/Cube/index",
             component: Layout,
             children: [{
@@ -139,11 +122,6 @@ const router = new Router({
         },
         {
             path: '/Authority',
-            // name: 'Authority-test',
-            // meta: {
-            //     title: 'Authority-test',
-            //     requireAuth: true
-            // },
             redirect:"/Authority/index",
             component: Layout,
             children: [{
@@ -157,12 +135,20 @@ const router = new Router({
             }]
         },
         {
+            path: '/QuillEditor',
+            redirect:"/QuillEditor/index",
+            component: Layout,
+            children: [
+              {
+                path: 'index',
+                name: 'QuillEditor',
+                component: () => import('@/views/QuillEditor'),
+                meta: { title: 'QuillEditor', icon: 'quillEditor' }
+              }
+            ]
+        },
+        {
             path: '/Intelligence',
-            // name: 'Intelligence-delivery',
-            // meta: {
-            //     title: 'Intelligence-delivery',
-            //     requireAuth: true
-            // },
             redirect:"/Intelligence/index",
             component: Layout,
             children: [{
@@ -174,6 +160,35 @@ const router = new Router({
                 },
                 component: Intelligencedelivery
             }]
+        },
+        {
+            path: '/DragComp',
+            name:'DragComp',
+            redirect:"/DragComp/Drag",
+            component: Layout,
+            meta: {
+                title: 'DragComp',
+                requireAuth: true
+            },
+            children: [{
+                path: 'Drag',
+                name: 'Drag',
+                meta: {
+                    title: 'Drag',
+                    requireAuth: true
+                },
+                component: () => import('@/views/Drag')
+            },
+            {
+                path: 'DragDialog',
+                name: 'DragDialog',
+                meta: {
+                    title: 'DragDialog',
+                    requireAuth: true
+                },
+                component: () => import('@/views/DragDialog')
+            }
+        ]
         },
         // 最后是404页面
         {

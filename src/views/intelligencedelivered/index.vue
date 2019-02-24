@@ -6,11 +6,11 @@
         <el-button type="primary" @click="handleChangeTab('deliveryRecord')">上下架历史</el-button>
     </div> -->
     <div class="tab-labels" style="margin-top:10px">
-        <div class="tab-lable first" :class="{'active':activeTab==1}" @click="switchTab(1)"><div class="tab-active-bar" v-if="activeTab==1"></div>
+        <div class="tab-lable first" :class="{'active':activeTab==1}" @click="switchTab(1)"><div class="tab-active-bar" ></div>
         智能上下架配置</div>
-        <div class="tab-lable middle" :class="{'active':activeTab==2}" @click="switchTab(2)"><div class="tab-active-bar" v-if="activeTab==2"></div>
+        <div class="tab-lable middle" :class="{'active':activeTab==2}" @click="switchTab(2)"><div class="tab-active-bar" ></div>
         锁定商品设置</div>  
-        <div class="tab-lable middle" :class="{'active':activeTab==3}" @click="switchTab(3)"><div class="tab-active-bar" v-if="activeTab==3"></div>
+        <div class="tab-lable middle" :class="{'active':activeTab==3}" @click="switchTab(3)"><div class="tab-active-bar" ></div>
         上下架历史</div>            
         <div class="tab-lable placeholder">&nbsp;</div>
     </div>
@@ -29,8 +29,8 @@ import deliveryRecord from './deliveryRecord';
 export default {
   data() {
     return {
-      activeTab:2,
-      currentTabComponent:"commoditylock"
+      activeTab:1,
+      currentTabComponent:"intelligencedelivery"
     };
   },
   components: {

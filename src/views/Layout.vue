@@ -8,7 +8,7 @@
             <!-- 这是组件要插入的地方 -->
             <div style="position: relative;overflow: hidden;">
               <transition name="fade-transform" mode="out-in">
-                <router-view class="page-component-wrap animated fadeIn"></router-view>
+                <router-view class="page-component-wrap "></router-view>
               </transition> 
             </div>
             
@@ -23,11 +23,7 @@ export default {
   name: 'layout',
   computed: {
     isCollapse() {
-      // return this.$store.state.common.isCollapse
-
       return this.$store.getters.isCollapse
-      // return true
-
     }
   },
   components: {

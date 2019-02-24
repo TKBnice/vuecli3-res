@@ -56,7 +56,7 @@
                     <span slot="title">操作日志</span>
                 </el-menu-item> -->
         </el-menu>
-        <div class="animated bounceInDown imgWrap">
+        <div class="animated fast bounceInDown imgWrap">
             <img src="../../../static/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
         </div>
     </div>
@@ -64,8 +64,8 @@
 <script>
 import Rythm from "rythm.js";
 const rythm = new Rythm();
-// const music = require("../../static/audio/romeostune.mp3");
-// import bus from "@/bus";
+const music = require("../../../static/audio/romeostune.mp3");
+import bus from "@/bus";
 
 export default {
   name: "sidebar",
@@ -80,8 +80,6 @@ export default {
   computed: {
     toggSiderBar() {
       return this.$store.getters.isCollapse;
-      // return true;
-
     },
     langType() {
       return this.$i18n.locale;
@@ -89,16 +87,16 @@ export default {
   },
   created() {
     this.initRythm();
-    // bus.$on("stopMusic", () => {
-    //   this.isMusicOn = false;
-    //   rythm.stop();
-    // });
+    bus.$on("stopMusic", () => {
+      this.isMusicOn = false;
+      rythm.stop();
+    });
     console.log(this.menu)
   },
   methods: {
     initRythm() {
-      // rythm.setMusic(music);
-      rythm.addRythm("twist1", "twist", 0, 10);
+      rythm.setMusic(music);
+      rythm.addRythm("twist1", "twist", 0, 10);//第一个参数是类名，第二个是动画名
       rythm.addRythm("pulse3", "pulse", 0, 10, {
         min: 0.75,
         max: 1.5
@@ -186,4 +184,5 @@ export default {
 .rythm.twist1 {
   display: block;
 }
+
 </style>

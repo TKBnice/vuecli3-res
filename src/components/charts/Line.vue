@@ -87,10 +87,10 @@ export default {
         },
         color: this.$store.getters.chartTheme,
         grid: {
-          top: "20%",
+          top: "10%",
           left: "3%",
           right: "3%",
-          bottom: "12%",
+          bottom: "8%",
           containLabel: true
         },
         tooltip: {
@@ -171,6 +171,6 @@ export default {
 <style lang="less">
 #myChartWrap {
   width: 100%;
-  height: calc(100vh - 45px);
+  height: calc(100vh - 260px);
 }
 </style>

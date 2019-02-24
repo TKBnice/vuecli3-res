@@ -59,14 +59,14 @@ export default {
       if (!value) return ''
       // console.log(this.langMessages.zh.m.menu)
       // console.log(this.langMessages.en.m.menu)
-const MENU_ZH = this.langMessages.zh.m.menu;
+      const MENU_ZH = this.langMessages.zh.m.menu;
       return Object.keys(MENU_ZH).find((item,i)=>{
         item = item.charAt(0).toUpperCase() + item.slice(1)
         return item==value;
       })
     },
     getBreadcrumb() {
-      // console.log(this.$route.matched)
+      console.log(this.$route.matched)
       let matched = this.$route.matched.filter(item => {
         if (item.name) {
           return true

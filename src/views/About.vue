@@ -24,9 +24,6 @@
       <UiProgress :progress="finishedPercentage" style="margin-top:10px;"></UiProgress>
     </div>
 
-
-
-
   </div>
 </template>
 
