@@ -291,8 +291,13 @@ background: #999
   right:0px;
   top: -1px;
   background-color: #fff;
+<<<<<<< HEAD
   transition: background-color .3s;
   transition:width .3s;
+=======
+  transition: background-color .4s;
+  transition:width .4s;
+>>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
 }
 
 .tab-main {
@@ -490,11 +495,17 @@ background: #999
   height: 70px;
   line-height: 70px;
   background-color: rgba(0, 0, 0, 0.6);
+<<<<<<< HEAD
   transition: left 0.28s;
 }
 
 .floatingBarCollapse {
   
+=======
+}
+
+.floatingBarCollapse {
+>>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
   left: 64px;
 }
 

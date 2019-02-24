@@ -26,9 +26,13 @@ export const m = {
     cube: '魔幻立方',
     authority: '权限测试',
     intelligence:'智能上架',
+<<<<<<< HEAD
     quillEditor:'富文本编辑器',
     dragComp:'拖拽组件',
     drag:'拖拽列表',
     dragDialog:"拖拽弹框"
+=======
+    quillEditor:'富文本编辑器'
+>>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
   }
 }

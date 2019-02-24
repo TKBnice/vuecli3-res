@@ -91,7 +91,11 @@ export default {
       this.isMusicOn = false;
       rythm.stop();
     });
+<<<<<<< HEAD
     console.log(this.menu)
+=======
+    // console.log(this.menu)
+>>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
   },
   methods: {
     initRythm() {

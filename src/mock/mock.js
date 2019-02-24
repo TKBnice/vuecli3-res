@@ -69,6 +69,7 @@ if (debug) {
                 router: '/QuillEditor',
                 icon: 'el-icon-edit-outline',
                 children: []
+<<<<<<< HEAD
             }, {
                 name: '拖拽组件',
                 name_en: 'DragComp',
@@ -90,6 +91,9 @@ if (debug) {
             ]
             }
         ]
+=======
+            }]
+>>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
         },
         "msg": "Success",
         "status": "YQ-000"
