@@ -65,5 +65,21 @@
         <li>6</li>
     </ul>
 
+
+    <script>
+
+        function foo(){
+            var i = 0;
+            return function () {
+                i++;
+                console.log(i)
+            }
+        }
+var a = foo(),b=foo();
+a();
+a();
+b();
+
+    </script>
 </body>
 </html>

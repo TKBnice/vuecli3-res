@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router from './router/index'
 import axios from 'axios'
 import store from './store/index'
 import VueParticles from 'vue-particles'
@@ -11,6 +11,8 @@ import customComponents from'./components/customComponents.js'
 import Messager from './common/Messager.js'
 
 import 'font-awesome/less/font-awesome.less'
+
+import './permission' // permission control
 
 import {
   Autocomplete,
@@ -60,7 +62,6 @@ import {
 
 
 
-
 // 样式
 
 //工具
@@ -103,14 +104,18 @@ Vue.use(Card)
 Vue.use(Rate)
 Vue.use(Cascader)
 Vue.use(Pagination)
-Vue.use(Message)
+// Vue.use(Message)
 Vue.use(Dialog)
 
 
 Vue.use(Loading.directive)
+
 Vue.use(VueParticles)
 
-Vue.use(customComponents);
+Vue.use(customComponents)
+
+// 消除Message自动弹框问题
+Vue.component(Message.name, Message)
 
 Vue.prototype.$loading = Loading.service
 // Vue.prototype.$msgbox = MessageBox
@@ -132,7 +137,7 @@ const thisVm = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-// const thisVm =new Vue({
+// const thisVm = new Vue({
 //   el: '#app',
 //   i18n,
 //   router,
@@ -140,4 +145,5 @@ const thisVm = new Vue({
 //   template: '<App/>',
 //   components: { App }
 // })
+
 Vue.prototype.$messager = new Messager(thisVm);

@@ -20,7 +20,7 @@
             <el-col :span="8">
                 <el-row type="flex" class="row-right" justify="end">
                     <el-col :span="11">
-                        <a class="">{{$t('m.topbar.sayHi')}}，{{userName}}</a>
+                        <a class="">{{$t('topbar.sayHi')}}，{{userName}}</a>
                     </el-col>
                     <el-col :span="3">
                         <i class="fa fa-language" title="切换语言" @click="toggleLanguage"></i>
@@ -73,18 +73,17 @@ export default {
     },
     toggleFullscreen() {
       if (!screenfull.enabled) {
-        this.$messager({
-          message: '您的浏览器不支持全屏',
-          type: 'warning'
-        })
+        this.$messager.warning('您的浏览器不支持全屏');
         return false
       }
       screenfull.toggle()
     },
     logout() {
-      localStorage.clear()
-      // bus.$emit('stopMusic')
-      this.$router.push('/Signin')
+      // localStorage.clear()
+      bus.$emit('stopMusic')
+      this.$store.dispatch('LogOut').then(() => {
+        location.reload()// In order to re-instantiate the vue-router object to avoid bugs
+      })
     }
   },
   watch: {

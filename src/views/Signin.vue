@@ -21,29 +21,29 @@
         >
         </vue-particles>
             <!-- <h3>Auto Vue</h3>
-            <h3>{{$t('m.login.introduction')}}</h3>
+            <h3>{{$t('login.introduction')}}</h3>
             <el-form ref="form" :model="form" :rules="rules" label-width="0px">
                 <el-form-item prop="name">
-                    <el-input :placeholder="$t('m.login.name_holder')" v-model="form.name"></el-input>
+                    <el-input :placeholder="$t('login.name_holder')" v-model="form.name"></el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input :placeholder="$t('m.login.password_holder')" v-model="form.password" type="password"></el-input>
+                    <el-input :placeholder="$t('login.password_holder')" v-model="form.password" type="password"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-row type="flex" justify="space-between">
-                        <el-checkbox v-model="isMemery" style="color:#eee">{{$t('m.login.remember')}}</el-checkbox>
-                        <a href="" @click.prevent="openMsg"  style="color:#eee">{{$t('m.login.forget')}}</a>
+                        <el-checkbox v-model="isMemery" style="color:#eee">{{$t('login.remember')}}</el-checkbox>
+                        <a href="" @click.prevent="openMsg"  style="color:#eee">{{$t('login.forget')}}</a>
                     </el-row>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="Login('form')">{{$t('m.login.button')}}</el-button>
+                    <el-button type="primary" @click="Login('form')">{{$t('login.button')}}</el-button>
                 </el-form-item>
             </el-form> -->
                 <div class="dowebok">
                   <div class="container">
                       <div class="left">
-                          <div class="login">{{$t('m.login.login')}}</div>
-                          <h3 class="eula">{{$t('m.login.introduction')}}</h3>
+                          <div class="login">{{$t('login.login')}}</div>
+                          <h3 class="eula">{{$t('login.introduction')}}</h3>
                       </div>
                       <div class="right">
                           <svg viewBox="0 0 320 350">
@@ -59,21 +59,21 @@
                           <div class="form">
                               <el-form ref="form" :model="form"  label-width="0px">
                                 <el-form-item > 
-                                    <label class="label" style="margin-top: 25px;height:36px;" for="text" >{{$t('m.login.account')}}</label>
-                                    <input v-focus type="text" id="email" @focus="emailFocus" v-model="form.name" autocomplete="off" :placeholder="$t('m.login.name_holder')">
-                                    <label class="label" style="height:32px;" for="password" >{{$t('m.login.password')}}</label>
-                                    <input type="password" id="password" @focus="passwordFocus" v-model="form.password" autocomplete="off" :placeholder="$t('m.login.password_holder')" >
+                                    <label class="label" style="margin-top: 25px;height:36px;" for="text" >{{$t('login.account')}}</label>
+                                    <input v-focus type="text" id="email" @focus="emailFocus" v-model="form.name" autocomplete="off" :placeholder="$t('login.name_holder')">
+                                    <label class="label" style="height:32px;" for="password" >{{$t('login.password')}}</label>
+                                    <input type="password" id="password" @focus="passwordFocus" v-model="form.password" autocomplete="off" :placeholder="$t('login.password_holder')" >
                                 </el-form-item>
 
                                 <el-form-item>
                                     <el-row type="flex" justify="space-between">
-                                        <el-checkbox v-model="isMemery" style="color:#eee">{{$t('m.login.remember')}}</el-checkbox>
-                                        <a href="" @click.prevent="openMsg"  style="color:#eee">{{$t('m.login.forget')}}</a>
+                                        <el-checkbox v-model="isMemery" style="color:#eee">{{$t('login.remember')}}</el-checkbox>
+                                        <a href="" @click.prevent="openMsg"  style="color:#eee">{{$t('login.forget')}}</a>
                                     </el-row>
                                 </el-form-item>
 
                                 <el-form-item style="text-align:center;">
-                                    <el-button  @click="Login('form')">{{$t('m.login.button')}}</el-button>
+                                    <el-button  @click="Login('form')">{{$t('login.button')}}</el-button>
                                 </el-form-item>
                              </el-form>
                           </div>
@@ -122,7 +122,7 @@ export default {
         name: [
           {
             required: true,
-            message: this.$t('m.login.name_tip'),
+            message: this.$t('login.name_tip'),
             trigger: "blur",
             validator: checkone
           }
@@ -130,7 +130,7 @@ export default {
         password: [
           {
             required: true,
-            message: this.$t('m.login.password_tip'),
+            message: this.$t('login.password_tip'),
             trigger: "blur"
           }
         ]
@@ -177,7 +177,7 @@ export default {
     },
     openMsg() {
       // 注意这里使用了国际化
-      this.$messager.warning(this.$t('m.login.info'));
+      this.$messager.warning(this.$t('login.info'));
     },
     emailFocus(){
         let current = null;

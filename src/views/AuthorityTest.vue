@@ -5,37 +5,48 @@
     </div>
 </template>
 <script>
+
 export default {
   name: "tpl",
   computed: {
-    isAdminAble() {
-      let menu = JSON.parse(localStorage.menu);
-      if (menu[0].children.length === 2) {
+    isAdminAble() {//权限判断
+      console.log('getters',this.$store.getters.roles)
+      let roles = this.$store.getters.roles;
+      if (roles.length === 2) {
         return true;
       } else {
         return false;
       }
+    },
+    checkPermission(value) {
+      if (value && value instanceof Array && value.length > 0) {
+        const roles = store.getters && store.getters.roles
+        const permissionRoles = value
+
+        const hasPermission = roles.some(role => {
+          return permissionRoles.includes(role)
+        })
+
+        if (!hasPermission) {
+          return false
+        }
+        return true
+      } else {
+        console.error(`need roles! Like v-permission="['admin','editor']"`)
+        return false
+      }
     }
+
   },
   methods: {
     setAdmin() {
-      let menu = JSON.parse(localStorage.menu);
-     
-      menu[0].children.push({
-        name: "关于组件",
-        name_en: 'About',
-        router: "/Project/About",
-        icon: "el-icon-document"
-      });
-      localStorage.menu = JSON.stringify(menu);
+
       this.$router.go(0);
 
     },
     setUser() {
-      let menu = JSON.parse(localStorage.menu);
-      menu[0].children.pop();
-      localStorage.menu = JSON.stringify(menu);
-      this.$router.go(0);
+
+
     }
   }
 };

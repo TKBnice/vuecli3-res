@@ -1,13 +1,20 @@
-export const msg = state => state.msg;
-export const userData = (state) => {
-  // console.log(state.userData)
-   return state.userData
-};
-export const isCollapse = (state) => {
-  // console.log(state.userData)
-   return state.isCollapse
-};
-export const chartTheme = (state) => {
-  // console.log(state.userData)
-   return state.chartTheme
-};
+const getters = {
+  // sidebar: state => state.app.sidebar,
+  // device: state => state.app.device,
+  avatar: state => state.user.avatar,
+  name: state => state.user.name,
+  roles: state => state.user.roles,
+
+  msg : state => state.user.msg,
+  userData : state => state.user.userData,
+  isCollapse : state => state.user.isCollapse,
+  chartTheme : state => state.user.chartTheme,
+  token: state => state.user.token,
+  permission_routers: state => state.user.routers,
+  addRouters:state => state.user.addRouters
+}
+export default getters
+
+
+
+

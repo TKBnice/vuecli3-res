@@ -1,4 +1,4 @@
-export const m = {
+export default {
   login: {
     login: 'Login',
     account:'Username',
@@ -30,5 +30,19 @@ export const m = {
     dragComp:'dragComp',
     drag:'Drag',
     dragDialog:'DragDialog'
+  },
+  route:{
+    Dashboard:'Dashboard',
+    Projects: 'Projects',
+    Notes: 'Notes',
+    About: 'About',
+    Weather: 'Weather',
+    Cube: 'Cube',
+    Authority: 'Authority',
+    Intelligence:'intelligence',
+    QuillEditor:'QuillEditor',
+    DragComp:'dragComp',
+    Drag:'Drag',
+    DragDialog:'DragDialog'
   }
 }

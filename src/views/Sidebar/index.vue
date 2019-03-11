@@ -30,6 +30,10 @@ export default {
     isCollapse() {
       this.$store.getters.isCollapse;
     }
+  },
+  mounted(){
+    console.log('this.$router',this.$router);
+    
   }
 }
 </script>

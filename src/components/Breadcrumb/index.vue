@@ -2,8 +2,8 @@
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item,index) in levelList" v-if="item.meta.title" :key="item.path">
-        <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title | capitalize(langType)}}</span>
-        <a v-else @click.prevent="handleLink(item)">{{ item.meta.title | capitalize(langType)}}</a>
+        <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">{{ generateTitle(item.meta.title) }}</span>
+        <a v-else @click.prevent="handleLink(item)">{{ generateTitle(item.meta.title) }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -11,8 +11,8 @@
 
 <script>
 import pathToRegexp from 'path-to-regexp'
-const MENU_ZH  = require('@/lang/zh.js').m.menu
-const MENU_EN  = require('@/lang/en.js').m.menu
+const MENU_ZH  = require('@/lang/zh.js')
+const MENU_EN  = require('@/lang/en.js')
 
 // console.log(MENU_ZH)
 
@@ -55,6 +55,14 @@ export default {
     }
   },
   methods: {
+    generateTitle(title) {//判断语言包route下的键值存在否
+      const hasKey = this.$te('route.' + title)
+      if (hasKey) {
+        const translatedTitle = this.$t('route.' + title)
+        return translatedTitle
+      }
+      return title
+    },
     capitalize2: function (value) {
       if (!value) return ''
       // console.log(this.langMessages.zh.m.menu)
@@ -66,7 +74,7 @@ export default {
       })
     },
     getBreadcrumb() {
-      console.log(this.$route.matched)
+
       let matched = this.$route.matched.filter(item => {
         if (item.name) {
           return true
@@ -74,9 +82,11 @@ export default {
       })
       
       const first = matched[0]
+      console.log(first.name)
       if (first && first.name !== 'Dashboard') {
         matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
       }
+
       this.levelList = matched
     },
     pathCompile(path) {

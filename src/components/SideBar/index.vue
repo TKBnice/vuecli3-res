@@ -1,28 +1,27 @@
 <!-- 左侧导航组件 -->
 <!-- 使用说明：<side-bar></side-bar> -->
 <template>
-    <div id="sidebar-wrap"  :class="{ collapsed: toggSiderBar }">
+    <div id="sidebar-wrap"  :class="{ collapsed: isCollapse }">
         <h3 class="logo">
-          <span class="rythm twist1">{{toggSiderBar ? 'VUE': 'AUTO VUE'}}</span>
+          <span class="rythm twist1">{{isCollapse ? 'VUE': 'AUTO VUE'}}</span>
         </h3>
-        <el-menu background-color="#324157" 
+        <el-menu 
+        background-color="#324157" 
         text-color="#ddd" 
         :default-active="$route.path" 
         :unique-opened="isUnique" 
         :router="isRouter" 
-        :show-timeout="200"
         mode="vertical" 
-        :class="{ collapsed: toggSiderBar }"
-        :collapse="toggSiderBar">
-        <!-- :class="{ collapsed: toggSiderBar }" -->
-            <template v-for="item in menu">
+        :class="{ collapsed: isCollapse }"
+        :collapse="isCollapse">
+        <!-- :class="{ collapsed: isCollapse }" -->
+              <!-- <template v-for="item in menu">
                 <el-submenu v-if="item.children.length !== 0" :index="item.router" :key="item.router">
                     <template slot="title">
                         <i :class="item.icon"></i>
                         <span slot="title">{{langType === 'en'? item.name_en: item.name}}</span>
                     </template>
                     <el-menu-item v-for="child in item.children" :index="child.router" :key="child.router">
-                        <!-- <i :class="child.icon"></i> -->
                         <span slot="title">{{langType === 'en'? child.name_en: child.name}}</span>
                     </el-menu-item>
                 </el-submenu>
@@ -31,30 +30,40 @@
                     <i :class="item.icon"></i>
                     <span slot="title">{{langType === 'en'? item.name_en: item.name}}</span>
                 </el-menu-item>
+            </template> -->
 
+            <template v-for="(item,j) in permission_routers">
+                <div v-if="item.children" :key="j">
+                  <!-- <el-submenu  v-if="!hasOneShowingChild(item.children,item)||(onlyOneChild.children&&!onlyOneChild.noShowingChildren)" :index="resolvePath(item.path)"> -->
+
+                  <template v-if="hasOneShowingChild(item.children,item)">
+                    <el-menu-item    :index="resolvePath(item.children[0].path,item.path)" :data="resolvePath(item.children[0].path,item.path)">
+                        <i :class="item.meta.icon"></i>
+                        <span slot="title">{{generateTitle(item.meta.title)}}</span>
+                    </el-menu-item>
+                  </template>
+
+                  <el-submenu v-else  :index="resolvePath(item.path)" :data="resolvePath(item.path)">
+                        <template slot="title">
+                          <i :class="item.meta.icon"></i>
+                          <span  slot="title">{{generateTitle(item.meta.title)}}</span>
+                        </template>
+
+                        <el-menu-item  v-for="(child,k) in item.children"  :index="resolvePath(child.path,item.path)" :key="k">
+                            <span slot="title">{{generateTitle(child.meta.title)}}</span>
+                        </el-menu-item>
+                  </el-submenu>
+                  <!-- <el-submenu  :index="item.router" :key="item.router"> -->
+
+
+   
+              </div>
             </template>
             <!-- <el-submenu index="1">
                     <template slot="title">
                         <i class="el-icon-time"></i>
                         <span slot="title">项目管理</span>
-                    </template>
-                    <el-menu-item index="/project-info">
-                        <i class="el-icon-menu"></i>
-                        <span slot="title">项目信息</span>
-                    </el-menu-item>
-                    <el-menu-item index="/project-path">
-                        <i class="el-icon-share"></i>
-                        <span slot="title">项目路径</span>
-                    </el-menu-item>
-                    <el-menu-item index="/enroll-list">
-                        <i class="el-icon-document"></i>
-                        <span slot="title">报名列表</span>
-                    </el-menu-item>
-                </el-submenu>
-                <el-menu-item index="/operation-log">
-                    <i class="el-icon-date"></i>
-                    <span slot="title">操作日志</span>
-                </el-menu-item> -->
+                    </template> -->
         </el-menu>
         <div class="animated fast bounceInDown imgWrap">
             <img src="../../../static/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
@@ -62,25 +71,30 @@
     </div>
 </template>
 <script>
+import path from 'path'
 import Rythm from "rythm.js";
 const rythm = new Rythm();
 const music = require("../../../static/audio/romeostune.mp3");
 import bus from "@/bus";
-
+import { mapGetters } from 'vuex'
+import { isExternal } from '@/utils'
 export default {
   name: "sidebar",
   data() {
     return {
       isMusicOn: false,
-      isUnique: true,
+      isUnique: false,
       isRouter: true,
-      menu: localStorage.menu ? JSON.parse(localStorage.menu) : []
+      menu: localStorage.menu ? JSON.parse(localStorage.menu) : [],
+      onlyOneChild:null
     };
   },
   computed: {
-    toggSiderBar() {
-      return this.$store.getters.isCollapse;
-    },
+    ...mapGetters([
+
+      'permission_routers',
+      'isCollapse'
+    ]),
     langType() {
       return this.$i18n.locale;
     }
@@ -91,13 +105,59 @@ export default {
       this.isMusicOn = false;
       rythm.stop();
     });
-<<<<<<< HEAD
+    console.log(this.permission_routers)
     console.log(this.menu)
-=======
-    // console.log(this.menu)
->>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
   },
   methods: {
+    generateTitle(title) {
+
+      // $t(path, locale, option) // text 文本替换，locale可单独设置语言，option可传参数替换模板
+      // $tc(path, choice, locale, option) // text+choice 比$t多一个choice，可以选择模板内容（模板内容间用 | 分隔，如 香蕉|苹果|梨，最多只能使用三个选项，下标从0开始，当选项为2个时下标从1开始~~）
+      // $te(path) // text+exist 判断当前语言包中path是否存在
+      // $d(number|Date, path, locale) // date 时间格式化
+      // $n(number, path, locale) // number  数字格式化（货币等）
+
+      const hasKey = this.$te('route.' + title)
+
+      if (hasKey) {
+        // $t :this method from vue-i18n, inject in @/lang/index.js
+        const translatedTitle = this.$t('route.' + title)
+        
+        return translatedTitle
+      }
+      return title
+    },
+    hasOneShowingChild(children,parent){
+      const showingChildren = children.filter(item => {
+        if (item.hidden) {
+          return false
+        } else {
+          // Temp set(will be used if only has one showing child)
+          this.onlyOneChild = item
+          return true
+        }
+      })
+      
+      if (showingChildren.length === 1) {
+        // console.log('item',!this.onlyOneChild.children||this.onlyOneChild.noShowingChildren);
+        return true
+      }
+      if (showingChildren.length === 0) {
+        this.onlyOneChild = { ... parent, path: '', noShowingChildren: true }
+        return true
+      }
+      return false
+    },
+    resolvePath(routePath,basePath) {
+
+      if (this.isExternalLink(routePath)) {
+        return routePath
+      }
+      return path.resolve(basePath, routePath)
+    },
+    isExternalLink(routePath) {
+      return isExternal(routePath)
+    },
     initRythm() {
       rythm.setMusic(music);
       rythm.addRythm("twist1", "twist", 0, 10);//第一个参数是类名，第二个是动画名
@@ -107,6 +167,7 @@ export default {
       });
     },
     toggleDance() {
+      console.log(rythm)
       if (this.isMusicOn) {
         this.isMusicOn = false;
         rythm.stop();
@@ -118,7 +179,7 @@ export default {
   }
 };
 </script>
-<style scoped lang="less">
+<style lang="less">
 #sidebar-wrap.collapsed{
   width: 64px;
 }
@@ -161,32 +222,39 @@ export default {
     font-size: 14px;
     overflow: hidden;
   }
+  .el-menu.collapsed{
+    -webkit-transition: width 0.28s;
+    transition: width 0.28s;
+    width: 64px;
+  }
+  .el-menu {
+    width: 160px;
+    height: 100%;
+    border-right: none; 
+  }
+
+  .el-menu--collapse .el-submenu > .el-submenu__title > .el-submenu__icon-arrow{
+    display: none;
+  }
+
+  .el-menu--collapse .el-submenu > .el-submenu__title > span{
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      visibility: hidden;
+      display: inline-block;
+  }
+  // 改变元素属性，要不动画效果不管用，是不是很厉害啊？哈哈哈
+  .rythm.twist1 {
+    display: block;
+    height: 16px;
+    line-height: 16px;
+    overflow: hidden;
+  }
 }
 
-// 动态改变左侧导航包裹层宽度
-#sidebar-wrap .el-menu.collapsed{
-  -webkit-transition: width 0.28s;
-  transition: width 0.28s;
-  width: 64px;
-}
-#sidebar-wrap .el-menu {
-  width: 160px;
-  height: 100%;
-  border-right: none; 
-}
 
-// 美化左侧导航的留白
-.el-submenu .el-menu-item {
-  padding: 0 20px;
-  min-width: 160px;
-  font-size: 12px;
-  text-align: center;
-  padding-left: 20px !important;
-}
 
-// 改变元素属性，要不动画效果不管用，是不是很厉害啊？哈哈哈
-.rythm.twist1 {
-  display: block;
-}
+
 
 </style>

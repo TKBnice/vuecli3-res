@@ -1,4 +1,4 @@
-export const m = {
+export default  {
   login: {
     login:'登陆',
     account:'账号',
@@ -26,13 +26,23 @@ export const m = {
     cube: '魔幻立方',
     authority: '权限测试',
     intelligence:'智能上架',
-<<<<<<< HEAD
     quillEditor:'富文本编辑器',
     dragComp:'拖拽组件',
     drag:'拖拽列表',
     dragDialog:"拖拽弹框"
-=======
-    quillEditor:'富文本编辑器'
->>>>>>> 1342afe5ca0e3dbe6d159f35dcd32f56c25d6121
-  }
+  },
+  route:{
+    Dashboard:'主页',
+    Projects: '项目管理',
+    Notes: '开发备忘',
+    About: '关于组件',
+    Weather: '天气图表',
+    Cube: '魔幻立方',
+    Authority: '权限测试',
+    Intelligence:'智能上架',
+    QuillEditor:'富文本编辑器',
+    DragComp:'拖拽组件',
+    Drag:'拖拽列表',
+    DragDialog:"拖拽弹框"
+  },
 }
