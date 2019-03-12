@@ -240,7 +240,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../../../static/img/timg.jpg');
+    background: url('../../assets/img/timg.jpg');
     background-position: -20% 10%;
     background-size: contain;
     #particles-js {

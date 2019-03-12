@@ -66,7 +66,7 @@
                     </template> -->
         </el-menu>
         <div class="animated fast bounceInDown imgWrap">
-            <img src="../../../static/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
+            <img src="../../assets/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
         </div>
     </div>
 </template>
@@ -74,7 +74,7 @@
 import path from 'path'
 import Rythm from "rythm.js";
 const rythm = new Rythm();
-const music = require("../../../static/audio/romeostune.mp3");
+const music = require("../../assets/audio/romeostune.mp3");
 import bus from "@/bus";
 import { mapGetters } from 'vuex'
 import { isExternal } from '@/utils'
@@ -105,8 +105,8 @@ export default {
       this.isMusicOn = false;
       rythm.stop();
     });
-    console.log(this.permission_routers)
-    console.log(this.menu)
+    // console.log(this.permission_routers)
+    // console.log(this.menu)
   },
   methods: {
     generateTitle(title) {

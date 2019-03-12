@@ -3,16 +3,27 @@ import App from './App'
 import router from './router/index'
 import axios from 'axios'
 import store from './store/index'
+
+
 import VueParticles from 'vue-particles'
 import './mock/mock'
 import i18n from './lang' // Internationalization
+
 // import './directives/customTitle.js'//自定义指令
+
 import customComponents from'./components/customComponents.js'
-import Messager from './common/Messager.js'
+import Messager from './common/Messager.js' //路由拦截
+
 
 import 'font-awesome/less/font-awesome.less'
 
 import './permission' // permission control
+
+
+
+
+
+
 
 import {
   Autocomplete,
@@ -126,7 +137,7 @@ Vue.prototype.$message = Message
 
 Vue.prototype.$axios = axios
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
 
 axios.defaults.baseURL = 'api/v1/'
 

@@ -362,7 +362,7 @@ export default {
   width: 16px;
   height: 18px;
   -webkit-font-smoothing: antialiased;
-  background:url('../../../static/img/goBack.png') no-repeat;
+  background:url('../../assets/img/goBack.png') no-repeat;
   background-size:16px; 
 
 }

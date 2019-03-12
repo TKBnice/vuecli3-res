@@ -26,12 +26,13 @@ export default  {
     cube: '魔幻立方',
     authority: '权限测试',
     intelligence:'智能上架',
-    quillEditor:'富文本编辑器',
+    quillEditor:'富文本编辑',
     dragComp:'拖拽组件',
     drag:'拖拽列表',
     dragDialog:"拖拽弹框"
   },
   route:{
+    Test:'测试页',
     Dashboard:'主页',
     Projects: '项目管理',
     Notes: '开发备忘',
@@ -40,7 +41,8 @@ export default  {
     Cube: '魔幻立方',
     Authority: '权限测试',
     Intelligence:'智能上架',
-    QuillEditor:'富文本编辑器',
+    Editor:'富文本编辑',
+    QuillEditor:'QuillEditor',
     DragComp:'拖拽组件',
     Drag:'拖拽列表',
     DragDialog:"拖拽弹框"

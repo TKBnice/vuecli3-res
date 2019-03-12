@@ -4,7 +4,7 @@
 		<div class="circle_process_locater">
 			<div class="circle_process" >
 	        	<template v-if="startClosingAni">
-		            <!-- <img src="../../../static/images/portage/done.png" class="done-marker"/> -->
+		            <!-- <img src="../../assets/images/portage/done.png" class="done-marker"/> -->
 		            <div class="done-marker-cover">&nbsp;</div>
 		            <div class="wrapper right">
 		                <div class="circle rightcircle"></div>
@@ -17,7 +17,7 @@
         </div>
 
         <div style="width:100%;height: 48px;line-height:48px;margin-top: 130px;">
-            <!-- <img src="../../../static/images/portage/truck.gif" class="truck" :style="{'transform':'translateX('+(truckMove)+'px)','opacity':progressBarShowUp&&!startClosingAni?1:0}" /> -->
+            <!-- <img src="../../assets/images/portage/truck.gif" class="truck" :style="{'transform':'translateX('+(truckMove)+'px)','opacity':progressBarShowUp&&!startClosingAni?1:0}" /> -->
         </div>
 
         <template v-if="!startClosingAni">

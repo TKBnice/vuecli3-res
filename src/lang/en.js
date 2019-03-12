@@ -32,6 +32,7 @@ export default {
     dragDialog:'DragDialog'
   },
   route:{
+    Test:'Test',
     Dashboard:'Dashboard',
     Projects: 'Projects',
     Notes: 'Notes',

@@ -1,27 +1,43 @@
-
 // // 非登录页的包裹组件
 const Layout = resolve => require(['@/views/Layout'], resolve)
 
 
-const componentsRouter = [
-    {
+const componentsRouter = [{
         path: '/QuillEditor',
-        redirect: "/QuillEditor/index",
+        redirect: "/QuillEditor/QuillEditor",
         component: Layout,
         meta: {
-            title: 'QuillEditor',
-            icon:'el-icon-edit-outline',
+            title: 'Editor',
+            icon: 'el-icon-edit-outline',
             requireAuth: true
         },
-        children: [{
-            path: 'index',
-            name: 'QuillEditor',
-            component: () => import('@/views/QuillEditor'),
-            meta: {
-                title: 'QuillEditor',
-                icon: 'quillEditor'
+        
+        children: [
+            {
+                path: 'QuillEditor',
+                name: 'QuillEditor',
+                component: () => import('@/views/QuillEditor/QuillEditor'),
+                meta: {
+                        title: 'QuillEditor'
+                    }
+            },
+            {
+                path: 'UeEditor',
+                name: 'UeEditor',
+                component: () => import('@/views/QuillEditor/UeEditor'),
+                meta: {
+                        title: 'UeEditor'
+                    }
+            },
+            {
+                path: 'wangEditor',
+                name: 'wangEditor',
+                component: () => import('@/views/QuillEditor/WangEditor'),
+                meta: {
+                        title: 'wangEditor'
+                }
             }
-        }]
+        ]
     },
     {
         path: '/Intelligence',
@@ -29,8 +45,8 @@ const componentsRouter = [
         component: Layout,
         meta: {
             title: 'Intelligence',
-            
-            icon:'el-icon-time',
+
+            icon: 'el-icon-time',
             requireAuth: true
         },
         children: [{
@@ -40,7 +56,7 @@ const componentsRouter = [
                 title: 'Intelligence',
                 requireAuth: true
             },
-            component: () => import('@/views/intelligencedelivered'),
+            component: () => import('@/views/Intelligencedelivered'),
         }]
     },
     {
@@ -60,7 +76,7 @@ const componentsRouter = [
                     title: 'Drag',
                     requireAuth: true
                 },
-                component: () => import('@/views/Drag')
+                component: () => import('@/views/Drag/Drag')
             },
             {
                 path: 'DragDialog',
@@ -69,7 +85,7 @@ const componentsRouter = [
                     title: 'DragDialog',
                     requireAuth: true
                 },
-                component: () => import('@/views/DragDialog')
+                component: () => import('@/views/Drag/DragDialog')
             }
         ]
     },

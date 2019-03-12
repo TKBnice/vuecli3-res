@@ -6,6 +6,7 @@ import UiModal from '@/components/commonUi/UiModal'
 import UiDialog from '@/components/commonUi/UiDialog'
 import UiProgress from '@/components/commonUi/UiProgress'
 
+import VueUeditorWrap from 'vue-ueditor-wrap'
 
 const customComponents={
 
@@ -20,6 +21,8 @@ const customComponents={
         Vue.component('UiDialog',UiDialog);
 
         Vue.component('WareList',resolve => require(['@/components/WareList'], resolve));
+
+        Vue.component('vue-ueditor-wrap', VueUeditorWrap)
 
         Vue.component('remote-script', {//渲染函数创建
             render: function (createElement) {
