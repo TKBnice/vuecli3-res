@@ -34,12 +34,14 @@
                 </el-row>
             </el-col>
         </el-row>
+        <TagsView></TagsView>
     </div>
 </template>
 <script>
 import screenfull from 'screenfull'
 import bus from '@/bus'
 import Breadcrumb from '@/components/Breadcrumb'
+import TagsView from '@/views/TagsView/TagsView'
 
 export default {
   name: 'topbar',
@@ -54,7 +56,8 @@ export default {
     }
   },
   components:{
-    Breadcrumb
+    Breadcrumb,
+    TagsView
   },
   watch: {
   },
@@ -100,7 +103,7 @@ export default {
   border-bottom: 1px solid #e7eaec;
   background: #2d3546;
   color: #fff;
-  height: 50px;
+  // height: 50px;
   padding: 0 15px;
   z-index: 4;
   box-sizing: border-box;
@@ -160,3 +163,4 @@ export default {
   text-align: center;
 }
 </style>
+

@@ -73,8 +73,6 @@
             this.editor.customConfig.uploadImgMaxLength = 5;
 
             this.editor.customConfig.zIndex = 100;
-    console.log(this.editor.$textContainerElem)
-            // this.editor.$textContainerElem.style.height = 660;
 
             this.editor.customConfig.customUploadImg =  (files, insert)=> {
 

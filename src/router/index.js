@@ -82,7 +82,6 @@ export const adminRoutes = [{
         }],
         component: Layout,
     },
-    // 然后就是嵌套路由了，也就是登陆后的各个页面
     {
         path: '/Projects',
         name: 'Projects',
@@ -97,6 +96,7 @@ export const adminRoutes = [{
         children: [{
                 path: 'Notes',
                 name: 'Notes',
+                // hidden: true,//控制是否在侧边栏显示
                 meta: {
                     title: 'Notes',
                     role: ['admin', 'super_editor'],

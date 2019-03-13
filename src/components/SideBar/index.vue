@@ -14,23 +14,6 @@
         mode="vertical" 
         :class="{ collapsed: isCollapse }"
         :collapse="isCollapse">
-        <!-- :class="{ collapsed: isCollapse }" -->
-              <!-- <template v-for="item in menu">
-                <el-submenu v-if="item.children.length !== 0" :index="item.router" :key="item.router">
-                    <template slot="title">
-                        <i :class="item.icon"></i>
-                        <span slot="title">{{langType === 'en'? item.name_en: item.name}}</span>
-                    </template>
-                    <el-menu-item v-for="child in item.children" :index="child.router" :key="child.router">
-                        <span slot="title">{{langType === 'en'? child.name_en: child.name}}</span>
-                    </el-menu-item>
-                </el-submenu>
-
-                <el-menu-item v-else :index="item.router" :key="item.router">
-                    <i :class="item.icon"></i>
-                    <span slot="title">{{langType === 'en'? item.name_en: item.name}}</span>
-                </el-menu-item>
-            </template> -->
 
             <template v-for="(item,j) in permission_routers">
                 <div v-if="item.children" :key="j">
@@ -53,17 +36,8 @@
                             <span slot="title">{{generateTitle(child.meta.title)}}</span>
                         </el-menu-item>
                   </el-submenu>
-                  <!-- <el-submenu  :index="item.router" :key="item.router"> -->
-
-
-   
               </div>
             </template>
-            <!-- <el-submenu index="1">
-                    <template slot="title">
-                        <i class="el-icon-time"></i>
-                        <span slot="title">项目管理</span>
-                    </template> -->
         </el-menu>
         <div class="animated fast bounceInDown imgWrap">
             <img src="../../assets/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
@@ -91,7 +65,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-
       'permission_routers',
       'isCollapse'
     ]),

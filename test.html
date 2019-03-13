@@ -74,16 +74,11 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
     <script type="text/javascript">
-        var E = window.wangEditor
-        var editor = new E('#div1')
-        var $text1 = $('#text1')
-        editor.customConfig.onchange = function (html) {
-            // 监控变化，同步更新到 textarea
-            $text1.val(html)
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.entries();
+        for(let [i,v] of fruits.entries()){
+            console.log(i,v)
         }
-        editor.create()
-        // 初始化 textarea 的值
-        $text1.val(editor.txt.html())
     </script>
 </body>
 </html>

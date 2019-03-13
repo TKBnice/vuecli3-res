@@ -23,8 +23,6 @@ export default {
             'Axios不支持JSONP，需要另外安装jsonp模块实现',
             '如果需要动态生成路由，可以使用router.addRoutes(routes)',
             '如果要区分新建页和编辑页，可以在路由对象中设置meta属性',
-            '在组件中访问路由信息对象：this.$route',
-            '在组件中访问路由实例：this.$router',
             '可以在全局拦截路由，也可以在单个组件中拦截路由',
             '如果是中等规模的项目，推荐使用vuex',
             '代码按页面分，每个人负责一个页面，尽量避免公共代码文件',
@@ -33,7 +31,6 @@ export default {
             '渲染图表时，可以在渲染前先 this.myChart.dispose()，销毁上次的图表',
             'vue-particles打包报错：https://github.com/creotip/vue-particles/issues/7',
             '配置favicon：https://segmentfault.com/a/1190000010043013#articleHeader5',
-            '切换路由时，vuex里的state不会跟着变，除非在导航守卫里提交mutations',
         ]
     };
   }

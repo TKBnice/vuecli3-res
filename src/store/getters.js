@@ -11,7 +11,8 @@ const getters = {
   chartTheme : state => state.user.chartTheme,
   token: state => state.user.token,
   permission_routers: state => state.user.routers,
-  addRouters:state => state.user.addRouters
+  addRouters:state => state.user.addRouters,
+  visitedviews:state => state.user.visitedviews
 }
 export default getters
 

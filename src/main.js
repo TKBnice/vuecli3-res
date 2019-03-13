@@ -67,6 +67,7 @@ import {
   Dialog,
   // MessageBox,
   Pagination,
+  Scrollbar,
   Message
 } from 'element-ui'
 // 框架
@@ -115,7 +116,7 @@ Vue.use(Card)
 Vue.use(Rate)
 Vue.use(Cascader)
 Vue.use(Pagination)
-// Vue.use(Message)
+Vue.use(Scrollbar)
 Vue.use(Dialog)
 
 
