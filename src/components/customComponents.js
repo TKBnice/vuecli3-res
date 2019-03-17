@@ -7,6 +7,7 @@ import UiDialog from '@/components/commonUi/UiDialog'
 import UiProgress from '@/components/commonUi/UiProgress'
 
 import VueUeditorWrap from 'vue-ueditor-wrap'
+import store from '@/store'
 
 const customComponents={
 
@@ -68,6 +69,7 @@ const customComponents={
                 document.title = binding.value;
             }
         });
+
         Vue.directive('focus', {
                 // 当绑定元素插入到 DOM 中。
                 
@@ -81,6 +83,7 @@ const customComponents={
                 //     el.focus()
                 // }
         });
+
         Vue.directive('clickoutside', {
             bind(el, binding, vnode) {
               function documentHandler(e) {
@@ -122,7 +125,7 @@ const customComponents={
                     }
                 })()
 
-        dialogHeaderEl.onmousedown = (e) => {
+            dialogHeaderEl.onmousedown = (e) => {
                     // 鼠标按下，计算当前元素距离可视区的距离
                     const disX = e.clientX - dialogHeaderEl.offsetLeft;
                     const disY = e.clientY - dialogHeaderEl.offsetTop;
@@ -181,7 +184,29 @@ const customComponents={
                     };
                 }
             }
-        })  
+        });
+        //指令权限判断
+        Vue.directive('permission',{
+            inserted(el, binding, vnode) {
+                const { value } = binding
+                const roles = store.getters && store.getters.roles
+                console.log('binding',binding)
+                if (value && value instanceof Array && value.length > 0) {
+                const permissionRoles = value
+            
+                const hasPermission = roles.some(role => {
+                    return permissionRoles.includes(role)
+                })
+            
+                if (!hasPermission) {
+                    el.parentNode && el.parentNode.removeChild(el)
+                }
+                } else {
+                throw new Error(`need roles! Like v-permission="['admin','editor']"`)
+                }
+            }
+        })
+
     } 
 
 };

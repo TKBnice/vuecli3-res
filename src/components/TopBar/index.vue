@@ -5,7 +5,7 @@
         <el-row type="flex" justify="space-between">
             <el-col :span="12">
                 <el-row type="flex" >
-                    <div>
+                    <div style="padding-left:15px;">
                         <i :class="[isCollapse? 'nav-rotate': '','fa fa-bars']" @click="toggleSiderBar"></i>
                     </div>
                     
@@ -104,7 +104,7 @@ export default {
   background: #2d3546;
   color: #fff;
   // height: 50px;
-  padding: 0 15px;
+  // padding: 0 15px;
   z-index: 4;
   box-sizing: border-box;
   .logo {
@@ -134,6 +134,9 @@ export default {
     &:hover {
       cursor: pointer;
     }
+  }
+  .fa-language,.fa-sign-out,.fa-arrows-alt{
+    padding-right:15px;
   }
   a {
     line-height: 50px;

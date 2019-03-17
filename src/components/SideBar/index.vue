@@ -19,7 +19,7 @@
                 <div v-if="item.children" :key="j">
                   <!-- <el-submenu  v-if="!hasOneShowingChild(item.children,item)||(onlyOneChild.children&&!onlyOneChild.noShowingChildren)" :index="resolvePath(item.path)"> -->
 
-                  <template v-if="hasOneShowingChild(item.children,item)">
+                  <template v-if="hasOneShowingChild(item.children,item)&&!item.alwaysShow">
                     <el-menu-item    :index="resolvePath(item.children[0].path,item.path)" :data="resolvePath(item.children[0].path,item.path)">
                         <i :class="item.meta.icon"></i>
                         <span slot="title">{{generateTitle(item.meta.title)}}</span>

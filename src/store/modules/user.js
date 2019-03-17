@@ -90,6 +90,9 @@ const user = {
       state.addRouters = routers
       state.routers = adminRoutes.concat(routers)
     },
+    SET_INTRODUCTION: (state, introduction) => {
+      state.introduction = introduction
+    },
     ADD_VISITED_VIEWS:(state,view)=>{//打开新页签--添加路由数据的方法
       if(state.visitedviews.some(v=>v.path==view.path))return;
       state.visitedviews.push(
@@ -216,15 +219,32 @@ const user = {
         resolve()
       })
     },
+    // 动态修改权限
+    ChangeRoles({ commit, dispatch }, role) {
+      return new Promise(resolve => {
+        commit('SET_TOKEN', role)
+        setToken(role)
+        getInfo(role).then(response => {
+          const data = response.data
+          commit('SET_ROLES', data.roles)
+          commit('SET_NAME', data.name)
+          commit('SET_AVATAR', data.avatar)
+          // commit('SET_INTRODUCTION', data.introduction)
+          dispatch('GenerateRoutes', data) // 动态修改权限后 重绘侧边菜单
+          resolve()
+        })
+      })
+    },
     GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         const { roles } = data
         let accessedRouters
+        console.log('data',data)
         if (roles.includes('admin')) {//管理员路由
           accessedRouters = asyncRouterMap
         } else {//访客路由
-          // accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
-          accessedRouters = []
+          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+          console.log('accessedRouters',accessedRouters)
         }
         
         commit('SET_ROUTERS', accessedRouters)//提交路由
