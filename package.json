@@ -9,6 +9,7 @@
   "dependencies": {
     "babel-plugin-component": "^1.1.1",
     "js-cookie": "^2.2.0",
+    "sortablejs": "^1.8.4",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

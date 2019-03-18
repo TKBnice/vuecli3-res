@@ -80,6 +80,36 @@ export const adminRoutes = [{
         component: Signin
     },
     {
+        path: '/Table',
+        name: 'Table',
+        meta: {
+            title: 'Table',
+            icon: 'el-icon-tickets',
+            requireAuth: true
+        },
+        children: [
+            {
+                name: 'Table',
+                path: 'index',
+                meta: {
+                    title: 'Table',
+                    requireAuth: true
+                },
+                component: ()=>import('@/views/Table')
+            },
+            {
+                name: 'DragTable',
+                path: 'dragTable',
+                meta: {
+                    title: 'DragTable',
+                    requireAuth: true
+                },
+                component: ()=>import('@/views/Table/dragTable')
+            }
+        ],
+        component: Layout,
+    },
+    {
         path: '/Test',
         name: 'Test',
         meta: {

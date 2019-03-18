@@ -53,6 +53,8 @@ import {
   Form,
   FormItem,
   Tabs,
+  Table,
+  TableColumn,
   BreadcrumbItem,
   Breadcrumb,
   TabPane,
@@ -105,6 +107,8 @@ Vue.use(Tooltip)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Tabs)
+Vue.use(Table)
+Vue.use(TableColumn)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(TabPane)

@@ -3,6 +3,8 @@
 
 
 import Mock from 'mockjs'
+import articleAPI from './article'
+
 import {
     param2Obj
 } from '@/utils'
@@ -42,6 +44,7 @@ if (debug) {
     //         "status": "Success"
     //     }
     // })
+    // 登录相关
     Mock.mock(/\/login\/login/, 'post', (config) => {
         const { username } = JSON.parse(config.body);
         return {
@@ -66,6 +69,8 @@ if (debug) {
         }
     })
 
+    // 文章相关
+    Mock.mock(/\/article\/list/, 'get', articleAPI.getList)
 
     Mock.mock(/getMenu/, {
         "data": {
