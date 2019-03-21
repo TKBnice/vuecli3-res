@@ -45,6 +45,10 @@ export default  {
     QuillEditor:'QuillEditor',
     DragComp:'拖拽组件',
     Drag:'拖拽列表',
-    DragDialog:"拖拽弹框"
+    DragDialog:"拖拽弹框",
+    Table:'表格',
+    DragTable:'拖拽表格',
+    CountTable:'计数表格'
+
   },
 }

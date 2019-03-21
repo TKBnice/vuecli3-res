@@ -11,7 +11,7 @@
         <span>{{text}}</span>
     </template>
     <template v-if="mode==2">
-        <div class="sk-fading-circle" :style="{'width':size+'px','height':size+'px'}">
+        <div class="sk-fading-circle" :style="{'width':size+'px','height':size+'px','margin-right':'12px'}">
           <div class="sk-circle1 sk-circle"></div>
           <div class="sk-circle2 sk-circle"></div>
           <div class="sk-circle3 sk-circle"></div>

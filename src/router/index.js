@@ -105,6 +105,15 @@ export const adminRoutes = [{
                     requireAuth: true
                 },
                 component: ()=>import('@/views/Table/dragTable')
+            },
+            {
+                name: 'CountTable',
+                path: 'countTable',
+                meta: {
+                    title: 'CountTable',
+                    requireAuth: true
+                },
+                component: ()=>import('@/views/Table/countTable')
             }
         ],
         component: Layout,

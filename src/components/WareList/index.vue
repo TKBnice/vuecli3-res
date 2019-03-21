@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import utils from "../Utils";
+import utils from "@/common/Utils";
 
 export default {
   name: "filterWares",

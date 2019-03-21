@@ -371,7 +371,7 @@ background: #999
 }
 
 .grid-header-cell {
-  background-color: #F4F4F4;
+  /* background-color: #F4F4F4; */
   border: 1px solid #d1d3e0;
   text-align: left;
   height: 30px;

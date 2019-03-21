@@ -678,7 +678,19 @@ class Utils {
         }
         return -1;
     };
-
+    includes(arr1, arr2,key) {//判断数组arr2的值是否都在在arr1中
+        return arr2.every((item,j) =>{
+            let itemStatus = ((arr,value)=>{
+                    for(var i = 0; i < arr.length; i++){
+                        if(value === arr[i]){
+                            return true;
+                        }
+                    }
+                    return false;
+                })(arr1,item[key])
+            return itemStatus;
+        });
+    }
     remove(array, val) {
         var index = this.indexOf(array, val);
         if (index > -1) {
