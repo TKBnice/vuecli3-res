@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <!-- 这是侧导航 -->
+    <div >
+        <!-- 侧导航 -->
         <side-bar></side-bar>
         <div class="con-wrap" :class="{conCollapse: isCollapse}">
             <!-- 这是顶部导航 -->

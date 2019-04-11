@@ -89,10 +89,10 @@ export const adminRoutes = [{
         },
         children: [
             {
-                name: 'Table',
+                name: 'PaginationTable',
                 path: 'index',
                 meta: {
-                    title: 'Table',
+                    title: 'PaginationTable',
                     requireAuth: true
                 },
                 component: ()=>import('@/views/Table')

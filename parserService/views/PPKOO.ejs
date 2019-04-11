@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PPKOO</title>
+  <style>
+      body {
+        padding: 20px 50px;
+        font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+      }
+      a {
+        color: #00B7FF;
+        cursor: pointer;
+      }
+      .container{position: relative;width: 1100px;overflow: hidden;zoom:1;}
+      .jobs{margin: 30px; float: left;}
+      .jobs span{ color: green; font-weight: bold;}
+      .btn{cursor: pointer;}
+      .fetching{display: none;color: red;}
+      .footer{clear: both;}
+  </style>
+</head>
+<body>
+<div>
+    <h3>【nodejs爬虫】 获取品库平台商品</h3>
+    <p>初始化完成 ...</p>
+    <div>搜索商品：
+      <input type="text" id="keywords">
+      <button class="btn" id="btn1" onclick="cheerFetch(1)">搜索</button>
+    </div>
+    <p class="fetching">数据抓取中 ... 请稍后</p>
+      <button class="btn" id="btn1" onclick="cheerFetch(--currentPage)">抓取上一页</button>
+      <button class="btn" id="btn2" onclick="cheerFetch(++currentPage)">抓取下一页</button>
+  </div>
+    <!-- 定义一组数组 -->
+    <% users=items %>
+    <div id="goodsList">
+        <ul>
+            <% for(var i in users){ %>
+            <li data="<%= users[i].skuId %>">
+                <p><a href='<%= users[i].Url %>'><%= users[i].title %></a></p>
+                <div>
+                  <span >价格：<%= users[i].price %>￥</span>
+                </div>
+                <img src="<%= users[i].imgUrl %>" alt="<%= users[i].title %>">
+            </li>
+            <% } %>
+        </ul>
+    </div>
+
+
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+var currentPage = 1;  //page初始0
+
+function cheerFetch(page){
+  if (page<1) return;
+  // console.log('goodsList',$('#goodsList'));
+  var keywords = $('#keywords').val().trim();
+
+  $.ajax({   //开始发送ajax请求至路径 /getJobs  进而作页面抓取处理
+        data:{
+          page,
+          keywords,
+        }, 
+        dataType: "json",
+        type: "get",
+        url: "/getGoodsList",
+        success: function(data){   //收到返回的json数据
+            // var goodsListHtml = data.data.goodsListHtml;
+            var goodsListHtml = '';
+            for (let i = 0; i < data.data.items.length; i++) {
+              let item = data.data.items[i]
+              goodsListHtml += `<li data="${item.skuId}">
+                  <p><a href='${item.itemUrl}'>${item.title}</a></p>
+                  <div>
+                    <span >价格：${item.price}￥</span>
+                  </div>
+                  <img src="${item.imgUrl}" alt="${item.title}">
+              </li>`
+              
+            }
+            
+            $("#goodsList").html(goodsListHtml);  //展现至页面
+        },
+        error: function(){ 
+            console.log("Error1: 未找到数据..");
+        }
+    });
+
+}
+
+
+</script>
+</body>
+</html>

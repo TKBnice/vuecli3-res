@@ -1,0 +1,57 @@
+{
+  "total": 20,
+  "success": true,
+  "error": "",
+  "rows": [
+    {
+      "sku_id": "37332510005",
+      "title": "大朴妙裁随心女童双层纱衬衫裙粉格宽松版型粉色系小裙子",
+      "sku_display": "粉格:110",
+      "logo": "http://img10.360buyimg.com/n1/jfs/t30250/189/493208065/86109/30bb63dd/5bf59df1N48e73c62.jpg",
+      "ware_id": 12289178529,
+      "sku_cnt": 1,
+      "click": 0,
+      "impression": 2,
+      "pay_trade_amt": 0,
+      "pay_trade_num": 0,
+      "pay_auction_num": 0,
+      "uv": 0,
+      "uv_trans_rate": 0,
+      "all_click": 0,
+      "all_imperssion": 0,
+      "all_pay_trade_amt": 0,
+      "all_pay_trade_num": 0,
+      "all_pay_auction_num": 0,
+      "all_trans_rate": 0,
+      "shopWordsTop3": [
+        "裙大朴"
+      ]
+    },
+    {
+      "sku_id": "37332512303",
+      "title": "大朴排水防滑一体成型浴室拖鞋男女情侣拖立体造型中空透气拖鞋",
+      "sku_display": "玫红:37",
+      "logo": "http://img10.360buyimg.com/n1/jfs/t29539/22/502914413/481802/d2d93118/5bf59df0N707dcc79.jpg",
+      "ware_id": 12289178241,
+      "sku_cnt": 3,
+      "click": 0,
+      "impression": 5,
+      "pay_trade_amt": 0,
+      "pay_trade_num": 0,
+      "pay_auction_num": 0,
+      "uv": 0,
+      "uv_trans_rate": 0,
+      "all_click": 0,
+      "all_imperssion": 0,
+      "all_pay_trade_amt": 0,
+      "all_pay_trade_num": 0,
+      "all_pay_auction_num": 0,
+      "all_trans_rate": 0,
+      "shopWordsTop3": [
+        "大朴 拖鞋",
+        "防滑排水拖鞋",
+        "拖鞋 大朴"
+      ]
+    }
+  ]
+}

@@ -47,6 +47,7 @@ export default  {
     Drag:'拖拽列表',
     DragDialog:"拖拽弹框",
     Table:'表格',
+    PaginationTable:'分页表格',
     DragTable:'拖拽表格',
     CountTable:'计数表格'
 

@@ -12,6 +12,9 @@ import i18n from './lang' // Internationalization
 // import './directives/customTitle.js'//自定义指令
 
 import customComponents from'./components/customComponents.js'
+import customDirectives from'./directives/customDirectives.js'
+
+
 import Messager from './common/Messager.js' //路由拦截
 
 
@@ -129,6 +132,7 @@ Vue.use(Loading.directive)
 Vue.use(VueParticles)
 
 Vue.use(customComponents)
+Vue.use(customDirectives)
 
 // 消除Message自动弹框问题
 Vue.component(Message.name, Message)

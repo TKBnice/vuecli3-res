@@ -44,6 +44,10 @@ export default {
     QuillEditor:'QuillEditor',
     DragComp:'dragComp',
     Drag:'Drag',
-    DragDialog:'DragDialog'
+    DragDialog:'DragDialog',
+    Table:'Table',
+    PaginationTable:'PaginationTable',
+    DragTable:'拖拽表格',
+    CountTable:'计数表格'
   }
 }

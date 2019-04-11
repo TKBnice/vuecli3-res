@@ -1,20 +1,21 @@
 <!-- 左侧导航组件 -->
 <!-- 使用说明：<side-bar></side-bar> -->
 <template>
+
     <div id="sidebar-wrap"  :class="{ collapsed: isCollapse }">
         <h3 class="logo">
           <span class="rythm twist1">{{isCollapse ? 'VUE': 'AUTO VUE'}}</span>
         </h3>
-        <el-menu 
-        background-color="#324157" 
-        text-color="#ddd" 
-        :default-active="$route.path" 
-        :unique-opened="isUnique" 
-        :router="isRouter" 
-        mode="vertical" 
-        :class="{ collapsed: isCollapse }"
-        :collapse="isCollapse">
-
+        <el-scrollbar style="height:100%;" wrap-class="scrollbar-wrapper">
+          <el-menu 
+          background-color="#324157" 
+          text-color="#ddd" 
+          :default-active="$route.path" 
+          :unique-opened="isUnique" 
+          :router="isRouter" 
+          mode="vertical" 
+          :class="{ collapsed: isCollapse }"
+          :collapse="isCollapse">
             <template v-for="(item,j) in permission_routers">
                 <div v-if="item.children" :key="j">
                   <!-- <el-submenu  v-if="!hasOneShowingChild(item.children,item)||(onlyOneChild.children&&!onlyOneChild.noShowingChildren)" :index="resolvePath(item.path)"> -->
@@ -38,11 +39,13 @@
                   </el-submenu>
               </div>
             </template>
-        </el-menu>
+          </el-menu>
+        </el-scrollbar >
         <div class="animated fast bounceInDown imgWrap">
             <img src="../../assets/img/little.gif" height="60px" class="gif rythm pulse3"  @click="toggleDance">
         </div>
     </div>
+  
 </template>
 <script>
 import path from 'path'
@@ -168,6 +171,7 @@ export default {
     left: 0;
     z-index: 5;
     overflow: hidden;
+    background-color: rgb(50, 65, 87);
   /* 图标动画 */
 
   .imgWrap {

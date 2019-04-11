@@ -2,168 +2,161 @@
 <template>
   <div class="frame-wrapper">
     <div class="main-container">
-
       <div class="filter-options-wrap">
         <div class="vertical-line-title">设置筛选项</div>
         <el-row :gutter="10" style="padding:20px;">
           <el-col :span="6" style="text-align: center;">
             <div class="filter-option">
               店内分类&nbsp;
-              <el-select split-button clearable v-model="filterItemValue" placeholder="店内分类" size="mini" style="width: 220px" @change="changeFilter">
-                  <el-option v-for="item in filterItems" :label="item.label" :value="item.value" :key="item.value">
-                  </el-option>
+              <el-select
+                split-button
+                clearable
+                v-model="filterItemValue"
+                placeholder="店内分类"
+                size="mini"
+                style="width: 220px"
+                @change="changeFilter"
+              >
+                <el-option
+                  v-for="item in filterItems"
+                  :label="item.label"
+                  :value="item.value"
+                  :key="item.value"
+                ></el-option>
               </el-select>
             </div>
           </el-col>
           <el-col :span="6" style="text-align: center;">
             <div class="filter-option">
-                访客数&nbsp;&nbsp;
-                <input class="input-default" style="width:48px;box-sizing:content-box;" v-model="visitorsMin" />
-                &nbsp;-&nbsp;
-                <input class="input-default" style="width:48px;box-sizing:content-box;" v-model="visitorsMax" />
-            </div>
-          </el-col>
-          <el-col :span="6" style="text-align: center;">
-            <div class="filter-option" >
-                好评率&nbsp;&nbsp;
-                <input class="input-default" style="width:48px;box-sizing:content-box;" v-model="favorRateMin" />
-                &nbsp;%-&nbsp;
-                <input class="input-default " style="width:48px;box-sizing:content-box;" v-model="favorRateMax" />%
+              访客数&nbsp;&nbsp;
+              <input
+                class="input-default"
+                style="width:48px;box-sizing:content-box;"
+                v-model="visitorsMin"
+              >
+              &nbsp;-&nbsp;
+              <input
+                class="input-default"
+                style="width:48px;box-sizing:content-box;"
+                v-model="visitorsMax"
+              >
             </div>
           </el-col>
           <el-col :span="6" style="text-align: center;">
             <div class="filter-option">
-                <input class="input-default"  placeholder="链接/SPU" style="width:286px;box-sizing:content-box;" v-model="favorRateMin" />
+              好评率&nbsp;&nbsp;
+              <input
+                class="input-default"
+                style="width:48px;box-sizing:content-box;"
+                v-model="favorRateMin"
+              >
+              &nbsp;%-&nbsp;
+              <input
+                class="input-default"
+                style="width:48px;box-sizing:content-box;"
+                v-model="favorRateMax"
+              >%
+            </div>
+          </el-col>
+          <el-col :span="6" style="text-align: center;">
+            <div class="filter-option">
+              <input
+                class="input-default"
+                placeholder="输入关键词"
+                style="width:200px;box-sizing:content-box;"
+                v-model="keywords"
+              >
             </div>
           </el-col>
         </el-row>
-        <!-- <div class="filter-options-line">
-
-          <div class="filter-option">
-            店内分类&nbsp;
-            <el-select split-button clearable v-model="filterItemValue" placeholder="店内分类" size="mini" style="width: 220px" @change="changeFilter">
-                <el-option v-for="item in filterItems" :label="item.label" :value="item.value" :key="item.value">
-                </el-option>
-            </el-select>
-          </div>
-
-          <div class="filter-option">
-              访客数&nbsp;&nbsp;
-              <input class="input-default" style="width:48px;box-sizing:content-box;" v-model="visitorsMin" />
-              &nbsp;-&nbsp;
-              <input class="input-default" style="width:48px;box-sizing:content-box;" v-model="visitorsMax" />
-          </div>
-
-          <div class="filter-option" >
-              好评率&nbsp;&nbsp;
-              <input class="input-default" style="width:48px;box-sizing:content-box;" v-model="favorRateMin" />
-              &nbsp;%-&nbsp;
-              <input class="input-default " style="width:48px;box-sizing:content-box;" v-model="favorRateMax" />%
-          </div>
-
-          <div class="filter-option">
-              <input class="input-default"  placeholder="链接/SPU" style="width:286px;box-sizing:content-box;" v-model="favorRateMin" />
-          </div>
-
-        </div> -->
         <div class="filter-options-buttons">
-          <button class="medium-button"><i class="el-icon-search"></i> 筛选</button>
-          <button class="medium-button lite" ><i class="el-icon-close" style="font-size:9px"></i> &nbsp;重置</button>
+          <button class="medium-button" @click="filterFearch">
+            <i class="el-icon-search"></i> 筛选
+          </button>
+          <button class="medium-button lite">
+            <i class="el-icon-close" style="font-size:9px"></i> &nbsp;重置
+          </button>
         </div>
       </div>
-        
+
       <div class="filter-options-table">
-        <div class="vertical-line-title">评价分析</div>
+        <div class="vertical-line-title">商品列表</div>
         <div style="margin-top:10px;">
-            <table style="width: 100%;border-collapse:collapse;border: 1px solid #d1d3e0;">
-                <tr class="grid-header">
-                    <td class="grid-header-cell" style="width:calc(100% - 1200px)">
-                        商品信息
-                    </td>
-                    <td class="grid-header-cell" style="width: 120px;">
-                        评价数
-                    </td>
-                    <td class="grid-header-cell" style="width: 120px;">
-                        好评数
-                    </td>
-                    <td class="grid-header-cell tail" style="width: 120px;">
-                        中评数
-                    </td>
-                    <td class="grid-header-cell tail" style="width: 120px;">
-                        差评数
-                    </td>
-                    <td class="grid-header-cell tail" style="width: 120px;">
-                        追评数
-                    </td>
-                    <td class="grid-header-cell tail" style="width: 120px;">
-                        晒单数
-                    </td>
-                    <td class="grid-header-cell tail" style="width: 120px;">
-                        好评率
-                    </td>
-                    <td class="grid-header-cell tail" style="width: 200px;">
-                        更新时间
-                    </td>
-                    <td class="grid-header-cell tail" style="width:160px;">
+          <div style="padding:20px;text-align: center;">
+            <el-pagination
+              background
+              layout="total, sizes, prev, pager, next, jumper"
+              :small="false"
+              :page-size="pageSize"
+              :page-sizes="[40,20,10,8,5]"
+              :total="total"
+              :current-page="page"
+              @current-change="changePage"
+              @size-change="handleSizeChange"
+            ></el-pagination>
+          </div>
+          <table style="width: 100%;border-collapse:collapse;border: 1px solid #d1d3e0;">
+            <tr class="grid-header">
+              <!-- <td class="grid-header-cell" style="width:calc(100% - 1200px)"> -->
+              <td class="grid-header-cell" style="width:100px">商品图片</td>
+              <td class="grid-header-cell tail" style="width: 360px;">商品标题</td>
+              <td class="grid-header-cell" style="width: 80px;">商品价格</td>
+              <td class="grid-header-cell" style="width: 80px;">商品编码</td>
+              <td class="grid-header-cell tail" style="width: 80px;">货号</td>
+              <td class="grid-header-cell tail" style="width: 120px;">地址</td>
+              <td class="grid-header-cell tail" style="width: 120px;">电话</td>
+              <!-- <td class="grid-header-cell tail" style="width:160px;">
                         操作
-                    </td>
-                </tr>
-                <!-- <tr class="grid-row" v-if="isLoading">
-                    <td class="grid-row-cell head tail" style="text-align:center;width:500px" colspan="7">
-                        <UiLoading :show="isLoading" :size="20" text="正在加载..."></UiLoading>
-                    </td>
-                </tr> -->
-                <tr class="grid-row" style="height:100px;"  v-for="(ware,n) in wares" :key="ware.ware_id">
-                    <td class="grid-row-cell">
-                      <div style="display:flex;align-items: center;justify-content: flex-start">
-                        <div class="item-pic-wrap" style="cursor:pointer">
-                            <img :src="utils.getJDMainImgSrc(ware.logo)" class="main-pic-wrapper" style="width:80px;height:80px;" />
-                            <div :class="{'img-pic-tooltip':true,'item-pic-tooltip-shift':utils.shouldShift(n,wares.length)}">
-                                <img :src="utils.getJDMainImgSrc(ware.logo)" class="item-pic-big" />
-                            </div>
-                        </div>
-                        <div style="flex:1;margin-left:5px;">
-                            <a class="alink" :href="ware.itemUrl" :title="ware.title" target="_Blank" style="display:block;">
-                                <div v-if="ware.wareStatus" class="ware-status-box" :class="{'onsale':ware.wareStatus==8}">{{ware.wareStatus==8?'在售':'待售'}}</div>
-                                  {{utils.maxLen(ware.title,35)}}
-                                  <span v-if="!ware.title"><i class="el-icon-circle-close"></i> 商品已经被删除/不存在</span>
-                                </a>
-                            
-                            <span style="display: block;color:#999;margin-top:10px;">
-                                编码：{{ware.ware_id}}&nbsp;&nbsp;
-                                <span :title="ware.itemNum" style="margin-left:3px;">货号：{{utils.maxLen(ware.itemNum,20)}}  </span>
-                            </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="grid-row-cell">
-                      2
-                    </td>
-                    <td class="grid-row-cell" >
-                      3
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      4
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      5
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      6
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      7
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      8
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      9
-                    </td>
-                    <td class="grid-row-cell" style="">
-                      
+              </td>-->
+            </tr>
+            <tr class="grid-row" v-if="isLoading">
+              <td class="grid-row-cell head tail" style="text-align:center;width:500px" colspan="7">
+                <UiLoading :show="isLoading" :size="20" text="正在加载..."></UiLoading>
+              </td>
+            </tr>
+            <tr v-else class="grid-row"  style="height:80px;" v-for="(ware,n) in wares" :key="ware.skuId">
+              <td class="grid-row-cell">
+                <div style="display:flex;align-items: center;justify-content: flex-start">
+                  <div class="item-pic-wrap" style="cursor:pointer">
+                    <img
+                      :src="utils.getJDMainImgSrc(ware.imgUrl)"
+                      class="main-pic-wrapper"
+                      style="width:60px;height:60px;"
+                    >
+                    <div
+                      :class="{'img-pic-tooltip':true,'item-pic-tooltip-shift':utils.shouldShift(n,wares.length)}"
+                    >
+                      <img :src="utils.getJDMainImgSrc(ware.imgUrl)" class="item-pic-big">
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="grid-row-cell">
+                <a
+                  class="alink"
+                  :href="ware.itemUrl"
+                  :title="ware.title"
+                  target="_Blank"
+                  style="display:block;"
+                >
+                  <div
+                    v-if="ware.wareStatus"
+                    class="ware-status-box"
+                    :class="{'onsale':ware.wareStatus==8}"
+                  >{{ware.wareStatus==8?'在售':'待售'}}</div>
+                  {{utils.maxLen(ware.title,35)}}
+                  <span v-if="!ware.title">
+                    <i class="el-icon-circle-close"></i> 商品已经被删除/不存在
+                  </span>
+                </a>
+              </td>
+              <td class="grid-row-cell" style>{{ware.price}}￥</td>
+              <td class="grid-row-cell">{{ware.skuId}}</td>
+              <td class="grid-row-cell" style>{{ware.itemN}}</td>
+              <td class="grid-row-cell" style>{{ware.addr}}</td>
+              <td class="grid-row-cell" style>{{ware.tel}}</td>
+              <!-- <td class="grid-row-cell" style="">
                       <template >
-                        <!-- :ref="'popover'+n" -->
                         <el-popover
                           placement="right"
                           width="588"
@@ -192,254 +185,283 @@
                         </el-popover>
                       </template>
                       
-                    </td>
-                </tr>
-            </table>
-
-            <div style="padding:20px;text-align: center;">
-              <el-pagination 
-                background
-                layout="prev, pager, next" 
-                :small="false"
-                :page-size="10"
-                :total="30"
-                :current-page="1"
-                >
-              </el-pagination>
-            </div>
+              </td>-->
+            </tr>
+          </table>
 
         </div>
       </div>
-
     </div>
-    
   </div>
 </template>
 
 <script>
 // 引入 ECharts 主模块
-const echarts = require('echarts/lib/echarts');
+const echarts = require("echarts/lib/echarts");
 // 引入柱状图
-require('echarts/lib/chart/line');
+require("echarts/lib/chart/line");
 // 引入提示框和标题组件
-require('echarts/lib/component/tooltip');
-require('echarts/lib/component/title');
+require("echarts/lib/component/tooltip");
+require("echarts/lib/component/title");
 
-import data from "./test.json";
-import utils from '../../common/Utils';
+import utils from "../../common/Utils";
 
 export default {
   data() {
-    
     return {
-        wares:data.taobao.splice(0,10),
-        filterItems: [
-          {
-            value: '选项1',
-            label: '黄金糕'
-          }, {
-            value: '选项2',
-            label: '双皮奶'
-          }, {
-            value: '选项3',
-            label: '蚵仔煎'
-          }
-        ],
-        filterItemValue: '',
-        visitorsMin:'',
-        visitorsMax:'',
-        favorRateMin:'',
-        favorRateMax:'',
-        utils:utils,
-        // myChart:echarts.init(document.getElementById('myChart'))
-    }
+      pageSize:10,
+      pagePart:4,
+      page: 1,
+      keywords: "",
+      wares: [],
+      total:0,
+      isLoading: false,
+      filterItems: [
+        {
+          value: "选项1",
+          label: "黄金糕"
+        },
+        {
+          value: "选项2",
+          label: "双皮奶"
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎"
+        }
+      ],
+      filterItemValue: "",
+      visitorsMin: "",
+      visitorsMax: "",
+      favorRateMin: "",
+      favorRateMax: "",
+      utils: utils
+      // myChart:echarts.init(document.getElementById('myChart'))
+    };
   },
   computed: {
     // myChart(){ return echarts.init(document.getElementById('myChart'))}
   },
-  components: {
-
+  components: {},
+  created() {
+    this.getGoodsList();
   },
   methods: {
-    changeFilter() {
+    getGoodsList() {
+      let n = this.page;
+      this.isLoading = true;
+      this.$axios
+        .get(
+          "http://localhost:8800/getGoodsList?page=" +
+            Math.ceil(n/this.pagePart) +
+            "&keywords=" +
+            this.keywords
+        )
+        .then(data => {
+          let result = data.data.data;
+          //实际显示时候四页分为一组数据
+          this.wares = result.items.slice((n-(Math.ceil(n/this.pagePart)-1)*this.pagePart-1)*this.pageSize,(n-(Math.ceil(n/this.pagePart)-1)*this.pagePart)*this.pageSize);
 
+          console.log((n-(Math.ceil(n/this.pagePart)-1)*this.pagePart-1)*this.pageSize,(n-(Math.ceil(n/this.pagePart)-1)*this.pagePart)*this.pageSize);
+
+          this.isLoading = false;
+
+          this.total = result.maxPageNum*4;
+          // console.log('data',data);
+        });
     },
-    watchHistoricalData(n){
-      // console.log('123222222222222');
-      echarts.dispose(document.getElementById('myChart'+n));
+    changePage(page){
+      this.page = page;
+      this.getGoodsList()
+    },
+    handleSizeChange(pageSize){
+      this.pageSize = pageSize;
+      switch (pageSize) {
+        case 40:
+          this.pagePart = 1;
+          break;
+        case 20:
+          this.pagePart = 2;
+          break;
+        case 10:
+          this.pagePart = 4;
+          break;
+        case 8:
+          this.pagePart = 5;
+          break;
+        case 5:
+          this.pagePart = 8;
+          break;
+        default:
+          this.pagePart = 4;
+          break;
+      }
+      this.getGoodsList()
+    },
+    filterFearch() {
+      this.getGoodsList();
+    },
+    changeFilter() {},
+    watchHistoricalData(n) {
+      echarts.dispose(document.getElementById("myChart" + n));
     },
     drawLine(n) {
       // 基于准备好的dom，初始化echarts实例
-      let myChart = echarts.init(document.getElementById('myChart'+n))
+      let myChart = echarts.init(document.getElementById("myChart" + n));
       // 绘制图表
-      console.log('12')
-      let option = null;
-      if (n==2) {
-        option = {
+      let option = {
           tooltip: {
-              trigger: 'axis',
-              confine :true,//将 tooltip 框限制在图表的区域内。
-                  formatter : function(params){
-                    // console.log('params---',params)
-                          var res  =  '';
-                          res += '<div>'+params[0].data+'</div>';
-                          res += '<div>'+params[1].data+'</div>';
-                          res += '<div>'+params[2].data+'</div>';
-                          res += '<div>'+params[3].data+'</div>';
-                         return res;
-                  }
+            trigger: "axis",
+            confine: true, //将 tooltip 框限制在图表的区域内。
+            formatter: function(params) {
+              // console.log('params---',params)
+              var res = "";
+              res += "<div>" + params[0].data + "</div>";
+              res += "<div>" + params[1].data + "</div>";
+              res += "<div>" + params[2].data + "</div>";
+              res += "<div>" + params[3].data + "</div>";
+              return res;
+            }
           },
           grid: {
-              top:'3%',
-              left: '1%',
-              right: '4%',
-              bottom: '1%',
-              containLabel: true
+            top: "3%",
+            left: "1%",
+            right: "4%",
+            bottom: "1%",
+            containLabel: true
           },
           toolbox: {
-              feature: {
-                  saveAsImage: {}
-              }
+            feature: {
+              saveAsImage: {}
+            }
           },
           xAxis: {
-              type: 'category',
-              boundaryGap: false,
-              data: ['03-01','03-02','03-03','03-04','03-05','03-06','03-07']
+            type: "category",
+            boundaryGap: false,
+            data: [
+              "03-01",
+              "03-02",
+              "03-03",
+              "03-04",
+              "03-05",
+              "03-06",
+              "03-07"
+            ]
           },
           yAxis: {
-              type: 'value'
+            type: "value"
           },
           series: [
-              {
-                  name:'邮件营销',
-                  type:'line',
-                  smooth: true,
-                  stack: '总量',
-                  data:[120, 132, 101, 134, 90, 230, 210]
-              },
-              {
-                  name:'联盟广告',
-                  type:'line',
-                  smooth: true,
-                  stack: '总量',
-                  data:[220, 182, 191, 234, 290, 330, 310]
-              },
-              {
-                  name:'视频广告',
-                  type:'line',
-                  stack: '总量',
-                  smooth: true,
-                  data:[150, 232, 201, 154, 190, 330, 410]
-              },
-              {
-                  name:'直接访问',
-                  type:'line',
-                  smooth: true,
-                  stack: '总量',
-                  data:[320, 332, 301, 334, 390, 330, 320]
-              }
+            {
+              name: "邮件营销",
+              type: "line",
+              smooth: true,
+              stack: "总量",
+              data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+              name: "联盟广告",
+              type: "line",
+              smooth: true,
+              stack: "总量",
+              data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+              name: "视频广告",
+              type: "line",
+              stack: "总量",
+              smooth: true,
+              data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+              name: "直接访问",
+              type: "line",
+              smooth: true,
+              stack: "总量",
+              data: [320, 332, 301, 334, 390, 330, 320]
+            }
           ]
         };
-      }else{
-        option = {
-            xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line',
-                smooth: true
-            }]
-        };
 
-      }
       myChart.setOption(option);
     }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
-.button-border-none{
-    width:90px;
-    border:none;
-    text-align: center;
-    border-radius: 4px;
-    background-color: transparent;
-    width: 120px;
-    height: 24px;
-    line-height: 22px;
-    color: #2992EE;
-    cursor: pointer;
-    outline: none;
-    font-size: 12px;
+.button-border-none {
+  width: 90px;
+  border: none;
+  text-align: center;
+  border-radius: 4px;
+  background-color: transparent;
+  width: 120px;
+  height: 24px;
+  line-height: 22px;
+  color: #2992ee;
+  cursor: pointer;
+  outline: none;
+  font-size: 12px;
 }
-.main-container{
-  
+.main-container {
   color: #131114;
-  .vertical-line-title{
+  .vertical-line-title {
     height: 42px;
     line-height: 24px;
     padding: 9px;
     padding-left: 30px;
     box-sizing: border-box;
     font-weight: bold;
-    background: #EBEBEB;
+    background: #ebebeb;
     position: relative;
-    &::before{
-      content: '';
+    &::before {
+      content: "";
       position: absolute;
       left: 20px;
       width: 4px;
       height: 24px;
-      background-color:#009CF1; 
+      background-color: #009cf1;
     }
   }
 
-  .filter-options-wrap{
-      background-color:#fff;
-      padding: 5px;
-      
-      .filter-options-line{
-        display: flex;
-        padding: 20px;
-        .filter-option{
-          margin-right: 20px;
-        }
-      }
-      .filter-options-buttons{
-        text-align: center;
-        padding-bottom:10px;
-        .medium-button{
-          width: 160px;
-          height: 34px;
-          background-color: #2992ee;
-          border-radius: 4px;
-          margin-right: 10px;
-          border: none;
-          outline: none;
-          color: #fff;
-          font-size: 12px;
-          font-family: "Microsoft YaHei",Arial,"sans-serif";
-          cursor: pointer;
-          &:hover{
-            text-shadow: 0 0 4px hsla(0,0%,100%,.75);
-            box-shadow: 0 0 4px 0 #2992ee;
-          }
-        }
+  .filter-options-wrap {
+    background-color: #fff;
+    padding: 5px;
 
+    .filter-options-line {
+      display: flex;
+      padding: 20px;
+      .filter-option {
+        margin-right: 20px;
       }
-  } 
-  .filter-options-table{
+    }
+    .filter-options-buttons {
+      text-align: center;
+      padding-bottom: 10px;
+      .medium-button {
+        width: 160px;
+        height: 34px;
+        background-color: #2992ee;
+        border-radius: 4px;
+        margin-right: 10px;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 12px;
+        font-family: "Microsoft YaHei", Arial, "sans-serif";
+        cursor: pointer;
+        &:hover {
+          text-shadow: 0 0 4px hsla(0, 0%, 100%, 0.75);
+          box-shadow: 0 0 4px 0 #2992ee;
+        }
+      }
+    }
+  }
+  .filter-options-table {
     padding: 5px;
     margin-top: 8px;
-    background-color:#fff;
+    background-color: #fff;
   }
-  
 }
-
 </style>

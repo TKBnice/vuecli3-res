@@ -2,7 +2,7 @@
     <!-- 包裹层设置初始高度，宽度不管 -->
     <div id="myChartWrap">
         <!-- 这里是要渲染的图表 -->
-        <div id="tb-echarts"></div>
+        <div id="tb-echarts">图标加载失败</div>
     </div>
 </template>
 <script>
