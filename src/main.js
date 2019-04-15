@@ -70,7 +70,7 @@ import {
   Cascader,
   Loading,
   Dialog,
-  // MessageBox,
+  MessageBox,
   Pagination,
   Scrollbar,
   Message
@@ -125,6 +125,7 @@ Vue.use(Cascader)
 Vue.use(Pagination)
 Vue.use(Scrollbar)
 Vue.use(Dialog)
+// Vue.use(MessageBox)
 
 
 Vue.use(Loading.directive)
@@ -135,13 +136,17 @@ Vue.use(customComponents)
 Vue.use(customDirectives)
 
 // 消除Message自动弹框问题
-Vue.component(Message.name, Message)
+// Vue.component(Message.name, Message)
+// Vue.component(MessageBox.name, MessageBox)
+
+console.log('Message---',MessageBox);
 
 Vue.prototype.$loading = Loading.service
 // Vue.prototype.$msgbox = MessageBox
 // Vue.prototype.$confirm = MessageBox.confirm
 // Vue.prototype.$prompt = MessageBox.prompt
-// Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$alert = MessageBox.alert
+
 Vue.prototype.$message = Message
 
 Vue.prototype.$axios = axios

@@ -440,7 +440,7 @@ background: #999
 }
 
 .grid-row:hover {
-  background-color: #F4F4F4;
+  background-color: rgba(70, 160, 253, 0.08);
 
 }
 

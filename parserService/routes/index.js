@@ -6,6 +6,7 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 var iconv = require('iconv-lite');
+var Url = require('url');
 
 var utils = require('../utils');
 
@@ -64,19 +65,12 @@ router.get('/getGoodsList', function(req, res){
     var Res = res;  //保存，防止下边的修改
     var page = req.query.page;
     var keywords = req.query.keywords;
+    var min_price = req.query.min_price;
+    var max_price = req.query.max_price;
     var url = 'https://www.ppkoo.com/search/goods.html';
-    
-    if (page&&page!=''&&keywords&&keywords!='') {
-        url = url+'?page='+page+'&keywords='+encodeURIComponent(keywords);
-    }
-    else if (page&&page!='') {
-        url = url+'?page='+page;
-    }
-    else if (keywords&&keywords!='') {
-        url = url+'?keywords='+encodeURIComponent(keywords); 
-    }
-    
-    console.log('query',req.query);
+
+    url = url+Url.parse(req.url).search;
+
     console.log('url',url);
 
     utils.httpGet(http,url).then((htmlString)=>{
@@ -98,9 +92,8 @@ router.get('/getGoodsList', function(req, res){
             vm.runInNewContext(parserCode, sharedSandbox);
             // var $ = cheerio.load(data); //cheerio模块开始处理 DOM处理
             // var parser = new ParserPPKOO($);
+
             // console.log('sharedSandbox',sharedSandbox.result);
-            //   console.log('__dirname',path.resolve('./parser/parser_ppkoo.js'));
-              
             Res.send({
                 data:sharedSandbox.result,
                 success:true

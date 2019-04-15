@@ -5,14 +5,14 @@
       <div class="filter-options-wrap">
         <div class="vertical-line-title">设置筛选项</div>
         <el-row :gutter="10" style="padding:20px;">
-          <el-col :span="6" style="text-align: center;">
+          <el-col :span="8" style="text-align: center;">
             <div class="filter-option">
-              店内分类&nbsp;
+              分类排序&nbsp;
               <el-select
                 split-button
                 clearable
                 v-model="filterItemValue"
-                placeholder="店内分类"
+                placeholder="分类排序"
                 size="mini"
                 style="width: 220px"
                 @change="changeFilter"
@@ -26,39 +26,25 @@
               </el-select>
             </div>
           </el-col>
-          <el-col :span="6" style="text-align: center;">
+          <el-col :span="8" style="text-align: center;">
             <div class="filter-option">
-              访客数&nbsp;&nbsp;
+              价格&nbsp;&nbsp;
               <input
+                type="number"
                 class="input-default"
                 style="width:48px;box-sizing:content-box;"
-                v-model="visitorsMin"
+                v-model="priceMin"
               >
               &nbsp;-&nbsp;
               <input
+                type="number"
                 class="input-default"
                 style="width:48px;box-sizing:content-box;"
-                v-model="visitorsMax"
+                v-model="priceMax"
               >
             </div>
           </el-col>
-          <el-col :span="6" style="text-align: center;">
-            <div class="filter-option">
-              好评率&nbsp;&nbsp;
-              <input
-                class="input-default"
-                style="width:48px;box-sizing:content-box;"
-                v-model="favorRateMin"
-              >
-              &nbsp;%-&nbsp;
-              <input
-                class="input-default"
-                style="width:48px;box-sizing:content-box;"
-                v-model="favorRateMax"
-              >%
-            </div>
-          </el-col>
-          <el-col :span="6" style="text-align: center;">
+          <el-col :span="8" style="text-align: center;">
             <div class="filter-option">
               <input
                 class="input-default"
@@ -73,7 +59,7 @@
           <button class="medium-button" @click="filterFearch">
             <i class="el-icon-search"></i> 筛选
           </button>
-          <button class="medium-button lite">
+          <button class="medium-button lite" @click="clearFearch">
             <i class="el-icon-close" style="font-size:9px"></i> &nbsp;重置
           </button>
         </div>
@@ -150,7 +136,7 @@
                   </span>
                 </a>
               </td>
-              <td class="grid-row-cell" style>{{ware.price}}￥</td>
+              <td class="grid-row-cell" >￥{{ware.price}}</td>
               <td class="grid-row-cell">{{ware.skuId}}</td>
               <td class="grid-row-cell" style>{{ware.itemN}}</td>
               <td class="grid-row-cell" style>{{ware.addr}}</td>
@@ -212,29 +198,27 @@ export default {
       pageSize:10,
       pagePart:4,
       page: 1,
-      keywords: "",
       wares: [],
       total:0,
       isLoading: false,
       filterItems: [
         {
-          value: "选项1",
-          label: "黄金糕"
+          value: "hot",
+          label: "综合"
         },
         {
-          value: "选项2",
-          label: "双皮奶"
+          value: "listtime",
+          label: "上架时间"
         },
         {
-          value: "选项3",
-          label: "蚵仔煎"
+          value: "price",
+          label: "批发价"
         }
       ],
       filterItemValue: "",
-      visitorsMin: "",
-      visitorsMax: "",
-      favorRateMin: "",
-      favorRateMax: "",
+      priceMin: "",
+      priceMax: "",
+      keywords: "",
       utils: utils
       // myChart:echarts.init(document.getElementById('myChart'))
     };
@@ -248,14 +232,19 @@ export default {
   },
   methods: {
     getGoodsList() {
+
+      console.log(this.filterItemValue,this.priceMin,this.priceMax,this.keywords);
+      
       let n = this.page;
       this.isLoading = true;
       this.$axios
         .get(
           "http://localhost:8800/getGoodsList?page=" +
             Math.ceil(n/this.pagePart) +
-            "&keywords=" +
-            this.keywords
+            "&keywords=" +this.keywords +
+            "&min_price=" +this.priceMin +
+            "&max_price=" +this.priceMax +
+            (this.filterItemValue!=''||undefined?"&"+this.filterItemValue +"=desc":"")
         )
         .then(data => {
           let result = data.data.data;
@@ -301,7 +290,15 @@ export default {
     filterFearch() {
       this.getGoodsList();
     },
-    changeFilter() {},
+    clearFearch(){
+      this.filterItemValue = "";
+      this.priceMin = "";
+      this.priceMax = "";
+      this.keywords = "";
+    },
+    changeFilter(val) {
+      console.log('val',val);
+    },
     watchHistoricalData(n) {
       echarts.dispose(document.getElementById("myChart" + n));
     },

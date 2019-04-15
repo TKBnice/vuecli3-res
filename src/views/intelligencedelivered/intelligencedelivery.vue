@@ -363,7 +363,7 @@ export default {
 
       if(this.popoverValue<0||this.popoverValue>100||this.popoverValue==""||!this.popoverValue){
         this.applyCancel();
-        this.$alert('商品上架数量在0~100之间', '友情提示', {
+        this.$message('商品上架数量在0~100之间', '友情提示', {
           confirmButtonText: '确定',
           type: 'warning'
         });
