@@ -8,10 +8,16 @@ npm run serve
 
 npm run build
 
-npm run test
-
-npm run lint
 ```
+可在parserService目录下启动爬虫
+
+```
+npm install
+
+node index
+
+```
+
 ### Tech Stack
 
 - Vue @ 2.5.9
