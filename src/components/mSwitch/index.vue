@@ -35,7 +35,6 @@
 <style scoped>
   main {
     width: 100%;
-    padding: 60px 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -47,7 +46,7 @@
     position: relative;
     width: 40px;
     height: 20px;
-    background: lightgrey;
+    background: #ddd;
     border-radius: 10px;
     cursor: pointer;
     transition: background .3s;
@@ -77,7 +76,7 @@
     background: white;
   }
   input[type="checkbox"]:checked + label {
-    background: #b4a078;
+    background: #409eff;
   }
   input[type="checkbox"]:checked + label::before {
     content: '开';

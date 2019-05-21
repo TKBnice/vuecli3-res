@@ -19,8 +19,8 @@
 .status-bar {
     width: 0px;
     height: 12px;
-    background-color: #2992EE;
     border-radius: 6px;
+    background-color: #2992EE;
     transition: width 0.8s linear;
 }
 .showingUpAnimation {
@@ -45,6 +45,7 @@
     font-weight: bold;
     transition: transform .8s linear;
 }
+
 @keyframes showingup100 {
     0% {
         width: 3%;

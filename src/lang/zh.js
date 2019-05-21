@@ -37,6 +37,7 @@ export default  {
     Projects: '项目管理',
     Notes: '开发备忘',
     About: '关于组件',
+    AboutLayout:'关于布局',
     Weather: '天气图表',
     Cube: '魔幻立方',
     Authority: '权限测试',

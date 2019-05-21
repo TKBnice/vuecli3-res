@@ -1,35 +1,70 @@
 <template>
   <div class="about">
-    <div>
+    <div class="projection" style="">
       <RippleButton classsName="main-step-button small" @click="openModal">
         <i class="el-icon-setting"></i>打开模态框
       </RippleButton>
     </div>
 
-    <div style="height:60px;line-height:60px;">
+    <div class="projection">
+      <div>
         <UiCheckBox v-model="checkBoxed" @changed="UiCheckBoxchanged" :marginRight="20"></UiCheckBox>
         <span>表格复选框</span>
+      </div>
     </div>
 
-    <UiModal v-model="isLoading">
-      <div class="notice-box" style="width:280px;height:80px;padding-top:15px;">
-        <UiLoading :show="true" :size="20" :mode="1" text="系统正在处理，请稍候..."></UiLoading>
-      </div>
-    </UiModal>
 
-    <div>
+
+    <div class="projection">
       <RippleButton classsName="main-step-button small" @click="handleProgress">
         进度条80%
       </RippleButton>
       <UiProgress :progress="finishedPercentage" style="margin-top:10px;"></UiProgress>
     </div>
 
+    <div class="projection">
+      自定义开关选择器
+      <mSwitch></mSwitch>
+    </div>
+
+
+    <div class="projection"> 
+      弹性过度
+      <mInput></mInput>
+    </div>
+
+    <div class="projection" style="height:160px;"> 
+      闪烁
+      <mTwinkle></mTwinkle>
+    </div>
+
+    <div class="projection" > 
+      抖动1
+      <mShake></mShake>
+    </div>
+
+    <div class="projection" > 
+      抖动2
+      <mShake2></mShake2>
+    </div>
+
+    <UiModal v-model="isLoading" >
+      <div class="notice-box" style="width:280px;height:80px;padding-top:15px;">
+        <UiLoading :show="true" :size="20" :mode="1" text="系统正在处理，请稍候..."></UiLoading>
+      </div>
+    </UiModal>
+
   </div>
 </template>
 
 
-
 <script>
+import mSwitch from 'comp/mSwitch'
+import mInput from 'comp/mInput'
+import mTwinkle from 'comp/mTwinkle'
+import mShake from 'comp/mShake'
+import mShake2 from 'comp/mShake/index2'
+
 export default {
   data() {
     return {
@@ -41,7 +76,13 @@ export default {
     };
   },
   mounted() {},
-  components: {},
+  components: {
+    mSwitch,
+    mInput,
+    mTwinkle,
+    mShake,
+    mShake2
+  },
   watch: {},
   methods: {
     UiCheckBoxchanged(checked) { //---------------复选框
@@ -75,7 +116,7 @@ export default {
   }
 };
 </script>
-<style lang="less" >
+<style lang="less" scoped>
 .notice-box {
   background-color: #fff;
   border-radius: 4px;
@@ -96,4 +137,18 @@ export default {
   justify-content:center;
   padding: 10px;
 }
+.projection {
+  height: 116px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(180,160,120,.8);
+  
+}
+
 </style>

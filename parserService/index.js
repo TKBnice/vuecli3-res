@@ -1,9 +1,9 @@
 require('babel-register');
 var express = require('express'),
-routes    = require('./routes'),
-path = require('path'),
-pkg = require('./package'),
-WebSocket = require('ws');
+    routes    = require('./routes'),
+    path = require('path'),
+    pkg = require('./package'),
+    WebSocket = require('ws');
 
 
 var app = express();

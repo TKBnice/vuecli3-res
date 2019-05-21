@@ -18,6 +18,7 @@ const ProjectInfo = resolve => require(['@/views/ProjectInfo'], resolve)
 
 //      // 关于组件
 const About = resolve => require(['@/views/About/index'], resolve)
+const AboutLayout = resolve => require(['@/views/About/layout'], resolve)
 
 //      // 天气预报
 const Weather = resolve => require(['@/views/Weather/index'], resolve)
@@ -32,6 +33,7 @@ const AuthorityTest = resolve => require(['@/views/AuthorityTest/index'], resolv
 const Notfound = resolve => require(['@/views/Notfound/Notfound'], resolve)
 
 const Test = resolve => require(['@/views/Test'], resolve)
+
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -178,7 +180,17 @@ export const asyncRouterMap = [
                     requireAuth: true
                 },
                 component: About
+            },
+            {
+                path: 'AboutLayout',
+                name: 'AboutLayout',
+                meta: {
+                    title: 'AboutLayout',
+                    requireAuth: true
+                },
+                component: AboutLayout
             }
+            
         ]
     },
     {

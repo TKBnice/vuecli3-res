@@ -37,6 +37,7 @@ export default {
     Projects: 'Projects',
     Notes: 'Notes',
     About: 'About',
+    AboutLayout:'AboutLayout',
     Weather: 'Weather',
     Cube: 'Cube',
     Authority: 'Authority',
